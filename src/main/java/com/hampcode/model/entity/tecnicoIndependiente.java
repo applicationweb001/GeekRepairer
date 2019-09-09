@@ -8,46 +8,49 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "tecnicoIndependiente")
+@Table(name = "tecnicoIndependientes")
 public class tecnicoIndependiente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long idTecInd;
+	private String nombre;
+	private int telefono;
+	private double montoHora;
+	private String estado;
 	
-	private long idTecInd;
-	
-	public long getIdTecInd() {
+	public Long getIdTecInd() {
 		return idTecInd;
 	}
-	public void setIdTecInd(long idTecInd) {
+	public void setIdTecInd(Long idTecInd) {
 		this.idTecInd = idTecInd;
 	}
-	String Nombre;
 	public String getNombre() {
-		return Nombre;
+		return nombre;
 	}
 	public void setNombre(String nombre) {
-		Nombre = nombre;
+		this.nombre = nombre;
 	}
-	int telefono;
 	public int getTelefono() {
 		return telefono;
 	}
 	public void setTelefono(int telefono) {
 		this.telefono = telefono;
 	}
-	double montoHora;
 	public double getMontoHora() {
 		return montoHora;
 	}
 	public void setMontoHora(double montoHora) {
 		this.montoHora = montoHora;
 	}
-	String estado;
 	public String getEstado() {
 		return estado;
 	}
 	public void setEstado(String estado) {
 		this.estado = estado;
 	}
-
+	
+	
+	
+	
+	
 }

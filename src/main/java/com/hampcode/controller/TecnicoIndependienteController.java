@@ -57,15 +57,16 @@ public class TecnicoIndependienteController implements Serializable {
 	public String saveTecnicoInd() {
 		String view = "";
 		try {
-			if (tecnicoInd.getIdTecInd() != null) {
+			if (this.tecnicoInd.getIdTecInd()!= null ){
 				tecnicobusiness.update(tecnicoInd);
 				Message.messageInfo("Registro actualizado exitosamente");
-			} else {
+			} 
+			else {
 				tecnicobusiness.insert(tecnicoInd);
 				Message.messageInfo("Registro guardado exitosamente");
 
 			}
-			this.getAlltecnicos();;
+			this.getAlltecnicos();
 			resetForm();
 			view = "list";
 		} catch (Exception e) {
