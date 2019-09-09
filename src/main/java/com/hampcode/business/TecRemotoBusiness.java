@@ -1,5 +1,6 @@
 package com.hampcode.business;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -10,9 +11,11 @@ import com.hampcode.model.entity.TecRemoto;
 import com.hampcode.model.repository.TecRemotoRepository;
 
 @Named
-public class TecRemotoBusiness {
+public class TecRemotoBusiness implements Serializable{
 
 
+	private static final long serialVersionUID = 1L;
+	
 	@Inject
 	private TecRemotoRepository tecnicoRepository;
 
@@ -37,7 +40,6 @@ public class TecRemotoBusiness {
 		return tecnicoRepository.findByName(name);
 	}
 
-	// tecnicoRepository.findByName(name);
 	
 	
 	

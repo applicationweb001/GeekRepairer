@@ -59,5 +59,8 @@ public class TecRemoto {
 	private String apellido;
 	private String genero;
 	private String email;
+	
+	//dnfnfeorgnerogn
+	
 
 }

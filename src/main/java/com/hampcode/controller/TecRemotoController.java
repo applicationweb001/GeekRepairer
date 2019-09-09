@@ -1,5 +1,6 @@
 package com.hampcode.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,12 @@ import com.hampcode.util.Message;
 @Named
 @SessionScoped
 
-public class TecRemotoController {
+public class TecRemotoController implements Serializable {
 
+	
+	private static final long serialVersionUID = 1L;
+
+	
 	@Inject
 	private TecRemotoBusiness tecnicoBusiness;
 

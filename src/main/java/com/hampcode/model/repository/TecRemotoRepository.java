@@ -1,5 +1,6 @@
 package com.hampcode.model.repository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -9,14 +10,15 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import com.hampcode.model.entity.Product;
+
 import com.hampcode.model.entity.TecRemoto;
 
 
 @Named
 
-public class TecRemotoRepository {
+public class TecRemotoRepository implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 
 	
 	@PersistenceContext(unitName="pwPU")
