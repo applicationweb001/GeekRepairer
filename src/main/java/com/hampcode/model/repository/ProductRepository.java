@@ -24,13 +24,11 @@ public class ProductRepository implements Serializable{
 		em.persist(product);
 		return product.getId();
 	}
-	
-	
+		
 	public Long update(Product product) throws Exception {
 		em.merge(product);
 		return product.getId();
 	}
-	
 	
 	public void delete(Product product) throws Exception {
 		em.remove(product);
