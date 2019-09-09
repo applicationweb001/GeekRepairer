@@ -1,5 +1,6 @@
 package com.hampcode.business;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,11 +8,10 @@ import javax.inject.Named;
 import javax.transaction.Transactional;
 
 import com.hampcode.model.entity.Client;
-import com.hampcode.model.entity.Product;
 import com.hampcode.model.repository.ClienteRepository;
 
 @Named
-public class ClienteBusiness {
+public class ClienteBusiness implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +20,7 @@ public class ClienteBusiness {
 	
 	@Transactional
 	
-	private Long insert(Client cliente)throws Exception{
+	public Long insert(Client cliente)throws Exception{
 		return clienteRepository.insert(cliente);
 	}
 	

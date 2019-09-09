@@ -1,5 +1,6 @@
 package com.hampcode.model.repository;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -10,16 +11,16 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 import com.hampcode.model.entity.Client;
-import com.hampcode.model.entity.Product;
 
 
 @Named
-public class ClienteRepository {
+public class ClienteRepository implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@PersistenceContext(unitName="pwPU")
 	private EntityManager em;
+	
 	
 	public Long insert(Client cliente) throws Exception {
 		em.persist(cliente);
