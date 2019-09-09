@@ -60,7 +60,7 @@ public class TecRemoto {
 	private String genero;
 	private String email;
 	
-	//dnfnfeorgnerogn
+	//dnfnfeorgnerog
 	//ddmfemvfkmvfd
 	
 

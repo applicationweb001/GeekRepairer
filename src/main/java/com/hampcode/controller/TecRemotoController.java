@@ -162,7 +162,7 @@ public class TecRemotoController implements Serializable {
 		this.tecnicos = tecnicos;
 	}
 
-	//fddvf
+	//fddv
 
 
 }

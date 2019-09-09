@@ -15,7 +15,7 @@ public class TecRemotoBusiness implements Serializable{
 
 
 	
-	//dfgdfdgf
+	//dfgdfdg
 	private static final long serialVersionUID = 1L;
 	
 	@Inject

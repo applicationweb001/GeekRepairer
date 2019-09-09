@@ -16,7 +16,7 @@ import com.hampcode.model.entity.TecRemoto;
 
 @Named
 
-//gdfgdf
+//gdfgd
 
 public class TecRemotoRepository implements Serializable{
 
