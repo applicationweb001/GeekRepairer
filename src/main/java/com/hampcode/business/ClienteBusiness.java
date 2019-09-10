@@ -29,6 +29,7 @@ public class ClienteBusiness implements Serializable {
 		return clienteRepository.insert(cliente);
 	}
 
+	
 	public List<Client> getAll() throws Exception {
 		return clienteRepository.findAll();
 	}

@@ -31,7 +31,7 @@ public class ClienteController implements Serializable {
 	public void init() {
 		cliente = new Client();
 		clientes = new ArrayList<Client>();
-		getAllClientes();
+		//getAllClientes();
 
 	}
 
@@ -64,7 +64,7 @@ public class ClienteController implements Serializable {
 				Message.messageInfo("Registro guardado exitosamente");
 
 			}
-			this.getAllClientes();
+			//this.getAllClientes();
 			resetForm();
 			view = "list";
 		} catch (Exception e) {

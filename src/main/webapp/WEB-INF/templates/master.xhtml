@@ -10,14 +10,40 @@
 
 <body>
 	<ui:insert name="header">
-		<h:form>
-			<p:menubar autoDisplay="false">
-				<p:submenu label="Mantenedores" icon="ui-icon-pencil">
-					<p:menuitem icon="ui-icon-document" value="Productos"
-						url="/product/list.xhtml" />
-				</p:submenu>
-			</p:menubar>
-		</h:form>
+		
+		<div class="ui-g-8 ui-g-nopad">
+        <div class="ui-g-6">
+        <p:commandButton  icon="ui-icon-grip-solid-horizontal" oncomplete="PF('sidebar1').show()" />
+        </div>
+        <div class="ui-g-6">
+        <h1 style="font-weight:normal">Geek Repairer</h1>
+        </div>
+        </div>
+        
+   	
+		<p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+   		 <h1 style="font-weight:normal">Menú Sidebar</h1>
+   		 <h:form>
+   		 <p:menu toggleable="true">
+        <p:submenu label="Productos">
+            <p:menuitem value="Save" action="#{menuView.save}" icon="pi pi-save" />
+            <p:menuitem value="Update" action="#{menuView.update}"  icon="pi pi-refresh"/>
+        </p:submenu>
+        <p:submenu label="Categorias">
+            <p:menuitem value="Delete" action="#{menuView.delete}"  ajax="false" icon="pi pi-times"/>
+        </p:submenu>
+        <p:submenu label="Navigations">
+            <p:menuitem value="External" url="http://www.primefaces.org" icon="pi pi-home"/>
+            <p:menuitem value="Internal" icon="pi pi-star"/>
+        </p:submenu>
+    </p:menu>
+   		 
+   		 </h:form>
+   		 
+    	<p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()"/>
+    	
+</p:sidebar>
+		
 	</ui:insert>
 
 	<ui:insert name="content">
@@ -25,9 +51,13 @@
 	</ui:insert>
 
 
+
 	<ui:insert name="footer">
+	<div>
 		<div>Copyright © hampcode, 2019. Todos los derechos reservados</div>
+		</div>
 	</ui:insert>
+
 </body>
 
 </html>

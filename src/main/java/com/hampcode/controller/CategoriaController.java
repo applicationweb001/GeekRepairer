@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.hampcode.business.CategoriaBusiness;
@@ -21,6 +22,7 @@ public class CategoriaController implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Inject
 	private CategoriaBusiness categoriaBusiness;
 	private Categoria categoria;
 	private List<Categoria> categorias;
