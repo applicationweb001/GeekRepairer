@@ -65,7 +65,7 @@ public class CategoriaRepository implements Serializable {
 	public List<Categoria> findByName(String name) throws Exception{
 		List<Categoria> categorias=new ArrayList<>();
 		
-		TypedQuery<Categoria> query=em.createQuery("FROM Product p WHERE p.name LIKE ?1"
+		TypedQuery<Categoria> query=em.createQuery("FROM Categoria p WHERE p.name LIKE ?1"
 				,Categoria.class);
 		query.setParameter(1, "%"+name+"%");
 		categorias=query.getResultList();

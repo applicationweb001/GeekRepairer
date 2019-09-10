@@ -13,7 +13,6 @@ import org.primefaces.event.SelectEvent;
 
 import com.hampcode.business.EspecialidadBusiness;
 import com.hampcode.model.entity.Especialidad;
-import com.hampcode.model.entity.Product;
 import com.hampcode.util.Message;
 
 @Named

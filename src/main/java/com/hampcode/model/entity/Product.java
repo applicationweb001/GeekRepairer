@@ -18,7 +18,9 @@ public class Product {
 	private Long id;
 	private String name;
 
-	private Long category;
+	@ManyToOne
+	@JoinColumn(name="category_id")
+	private Categoria categoria;
 
 	@Column(name = "unit_price", nullable = false)
 	private double unitPrice;
@@ -42,12 +44,13 @@ public class Product {
 		this.name = name;
 	}
 
-	public Long getCategory() {
-		return category;
+	
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setCategory(Long category) {
-		this.category = category;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	public double getUnitPrice() {
