@@ -10,18 +10,18 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="categorias")
+@Table(name = "categorias")
 public class Categoria {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="fk_category")
+	@JoinColumn(name = "fk_category")
 	private Categoria categoria;
-	
-	@Column(name="name", nullable=false, length=60)
+
+	@Column(name = "name", nullable = false, length = 60)
 	private String name;
 
 	public Long getId() {
@@ -47,10 +47,5 @@ public class Categoria {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
-	
-	
-	
-	
+
 }

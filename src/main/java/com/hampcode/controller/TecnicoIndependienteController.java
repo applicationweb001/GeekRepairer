@@ -23,12 +23,12 @@ public class TecnicoIndependienteController implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Inject
 	private TecnicoIndBusiness tecnicobusiness;
-	
-	private tecnicoIndependiente tecnicoInd; //NuevoProducto
-	private List<tecnicoIndependiente> tecnicoInds;//ListaProductos
-	private tecnicoIndependiente tecnicoselect;//Producto Seleccionado Editar
+
+	private tecnicoIndependiente tecnicoInd; // NuevoProducto
+	private List<tecnicoIndependiente> tecnicoInds;// ListaProductos
+	private tecnicoIndependiente tecnicoselect;// Producto Seleccionado Editar
 	private String filterName;// Criterio de Busqueda
-	
+
 	@PostConstruct
 	public void init() {
 		tecnicoInd = new tecnicoIndependiente();
@@ -38,8 +38,8 @@ public class TecnicoIndependienteController implements Serializable {
 
 	public void getAlltecnicos() {
 		try {
-			tecnicoInds= tecnicobusiness.getAll();
-			
+			tecnicoInds = tecnicobusiness.getAll();
+
 		} catch (Exception e) {
 			Message.messageError("Error Carga de Productos :" + e.getMessage());
 		}
@@ -57,11 +57,10 @@ public class TecnicoIndependienteController implements Serializable {
 	public String saveTecnicoInd() {
 		String view = "";
 		try {
-			if (this.tecnicoInd.getIdTecInd()!= null ){
+			if (this.tecnicoInd.getIdTecInd() != null) {
 				tecnicobusiness.update(tecnicoInd);
 				Message.messageInfo("Registro actualizado exitosamente");
-			} 
-			else {
+			} else {
 				tecnicobusiness.insert(tecnicoInd);
 				Message.messageInfo("Registro guardado exitosamente");
 
@@ -113,10 +112,8 @@ public class TecnicoIndependienteController implements Serializable {
 	}
 
 	public void resetForm() {
-		this.filterName="";
+		this.filterName = "";
 		this.tecnicoInd = new tecnicoIndependiente();
 	}
-
-	
 
 }

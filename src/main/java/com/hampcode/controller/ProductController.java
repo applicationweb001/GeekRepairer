@@ -24,9 +24,9 @@ public class ProductController implements Serializable {
 	@Inject
 	private ProductBusiness productBusiness;
 
-	private Product product; //NuevoProducto
-	private List<Product> products;//ListaProductos
-	private Product productSelect;//Producto Seleccionado Editar
+	private Product product; // NuevoProducto
+	private List<Product> products;// ListaProductos
+	private Product productSelect;// Producto Seleccionado Editar
 	private String filterName;// Criterio de Busqueda
 
 	@PostConstruct
@@ -112,7 +112,7 @@ public class ProductController implements Serializable {
 	}
 
 	public void resetForm() {
-		this.filterName="";
+		this.filterName = "";
 		this.product = new Product();
 	}
 

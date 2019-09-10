@@ -19,7 +19,7 @@ public class Product {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name="category_id")
+	@JoinColumn(name = "category_id")
 	private Categoria categoria;
 
 	@Column(name = "unit_price", nullable = false)
@@ -44,7 +44,6 @@ public class Product {
 		this.name = name;
 	}
 
-	
 	public Categoria getCategoria() {
 		return categoria;
 	}

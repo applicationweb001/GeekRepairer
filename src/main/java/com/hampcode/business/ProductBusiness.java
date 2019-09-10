@@ -14,28 +14,25 @@ import com.hampcode.model.repository.ProductRepository;
 public class ProductBusiness implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private ProductRepository productRepository;
 
-	@Transactional 
+	@Transactional
 	public Long insert(Product product) throws Exception {
 		return productRepository.insert(product);
 	}
 
-	
 	@Transactional
-	public Long update(Product product) throws Exception{
+	public Long update(Product product) throws Exception {
 		return productRepository.update(product);
 	}
-	
-	
+
 	public List<Product> getAll() throws Exception {
 		return productRepository.findAll();
 	}
-	
-	
-	public List<Product> getProductsByName(String name) throws Exception{
+
+	public List<Product> getProductsByName(String name) throws Exception {
 		return productRepository.findByName(name);
 	}
 

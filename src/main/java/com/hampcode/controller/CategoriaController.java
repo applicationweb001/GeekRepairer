@@ -14,7 +14,7 @@ import com.hampcode.util.Message;
 
 @Named
 @SessionScoped
-public class CategoriaController implements Serializable{
+public class CategoriaController implements Serializable {
 
 	/**
 	 * 
@@ -26,19 +26,19 @@ public class CategoriaController implements Serializable{
 	private List<Categoria> categorias;
 	private Categoria categoriaSelect;
 	private String filterName;
-	
+
 	@PostConstruct
 	public void init() {
 		categoria = new Categoria();
 		categorias = new ArrayList<Categoria>();
 		getAllCategorias();
 	}
-	
+
 	public void resetForm() {
-		this.filterName="";
+		this.filterName = "";
 		this.categoria = new Categoria();
 	}
-	
+
 	public void getAllCategorias() {
 		try {
 			categorias = categoriaBusiness.getAll();
@@ -46,7 +46,7 @@ public class CategoriaController implements Serializable{
 			Message.messageError("Error Carga de Categorias :" + e.getMessage());
 		}
 	}
-	
+
 	public String saveCategoria() {
 		String view = "";
 		try {
@@ -125,7 +125,5 @@ public class CategoriaController implements Serializable{
 	public void setFilterName(String filterName) {
 		this.filterName = filterName;
 	}
-	
-	
-	
+
 }

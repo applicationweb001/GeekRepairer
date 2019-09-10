@@ -11,7 +11,6 @@ import javax.inject.Named;
 
 import org.primefaces.event.SelectEvent;
 
-
 import com.hampcode.business.TecRemotoBusiness;
 
 import com.hampcode.model.entity.TecRemoto;
@@ -22,14 +21,13 @@ import com.hampcode.util.Message;
 
 public class TecRemotoController implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 
-	
 	@Inject
 	private TecRemotoBusiness tecnicoBusiness;
 
 	private TecRemoto tecnico;
+
 	public TecRemoto getTecnico() {
 		return tecnico;
 	}
@@ -153,7 +151,6 @@ public class TecRemotoController implements Serializable {
 		this.tecnicoBusiness = tecnicoBusiness;
 	}
 
-	
 	public List<TecRemoto> getTecnicos() {
 		return tecnicos;
 	}
@@ -162,7 +159,6 @@ public class TecRemotoController implements Serializable {
 		this.tecnicos = tecnicos;
 	}
 
-	//fddv
-
+	// fddv
 
 }

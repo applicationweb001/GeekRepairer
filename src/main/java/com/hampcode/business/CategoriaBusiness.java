@@ -11,33 +11,28 @@ import com.hampcode.model.entity.Categoria;
 import com.hampcode.model.repository.CategoriaRepository;
 
 @Named
-public class CategoriaBusiness implements Serializable{
+public class CategoriaBusiness implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private CategoriaRepository categoriaRepository;
 
-	@Transactional 
+	@Transactional
 	public Long insert(Categoria categoria) throws Exception {
 		return categoriaRepository.insert(categoria);
 	}
 
-	
 	@Transactional
-	public Long update(Categoria categoria) throws Exception{
+	public Long update(Categoria categoria) throws Exception {
 		return categoriaRepository.update(categoria);
 	}
-	
-	
+
 	public List<Categoria> getAll() throws Exception {
 		return categoriaRepository.findAll();
 	}
-	
-	
-	
-	
+
 }

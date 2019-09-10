@@ -18,116 +18,109 @@ import com.hampcode.util.Message;
 @Named
 @SessionScoped
 
-public class EspecialidadController implements Serializable{
+public class EspecialidadController implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private EspecialidadBusiness especialidadBusiness;
-	
+
 	private Especialidad especialidad;
 	private List<Especialidad> especialidades;
 	private Especialidad especialidadSelect;
 	private String filterName;
-	
+
 	@PostConstruct
 	public void init() {
 		especialidad = new Especialidad();
 		especialidades = new ArrayList<Especialidad>();
 		getAllEspecialidades();
 	}
-	
-	public void getAllEspecialidades()
-	{
-		try
-		{
+
+	public void getAllEspecialidades() {
+		try {
 			especialidades = especialidadBusiness.getAll();
-		} catch(Exception e)
-		{
+		} catch (Exception e) {
 			Message.messageError("Error Carga de Especialidades: " + e.getMessage());
 		}
 	}
-	
-	public String newEspecialidad()
-	{
+
+	public String newEspecialidad() {
 		resetForm();
 		return "insert.xhtml";
 	}
-	
+
 	public String listEspecialidad() {
 		return "list.xhtml";
 	}
-		
+
 	public String saveEspecialidad() {
 		String view = "";
-		try
-		{
-			if(especialidad.getId() != null) {
-			especialidadBusiness.update(especialidad);
-			Message.messageInfo("Registro actualizado exitosamente");
-			
-		} else {
-			especialidadBusiness.insert(especialidad);
-			Message.messageInfo("Registro guardado exitosamente");
-		}
-		this.getAllEspecialidades();
-		resetForm();
-		view = "list";
-		
-	}catch(Exception e)
-		{
-		Message.messageInfo("Error Especialidad :" + e.getStackTrace());
+		try {
+			if (especialidad.getId() != null) {
+				especialidadBusiness.update(especialidad);
+				Message.messageInfo("Registro actualizado exitosamente");
+
+			} else {
+				especialidadBusiness.insert(especialidad);
+				Message.messageInfo("Registro guardado exitosamente");
+			}
+			this.getAllEspecialidades();
+			resetForm();
+			view = "list";
+
+		} catch (Exception e) {
+			Message.messageInfo("Error Especialidad :" + e.getStackTrace());
 		}
 		return view;
 	}
-	
+
 	public String editEspecialidad() {
 		String view = "";
 		try {
-			if(this.especialidadSelect != null) {
+			if (this.especialidadSelect != null) {
 				this.especialidad = especialidadSelect;
-				
+
 				view = "update";
-			}else {
+			} else {
 				Message.messageInfo("Debe seleccionar una especialidad");
 			}
-		} catch(Exception e)
-		{
+		} catch (Exception e) {
 			Message.messageError("Error Especialidad:" + e.getMessage());
 		}
 		return view;
 	}
-	
+
 	public void searchEspecialidadByName() {
-	try {		
-		especialidades = especialidadBusiness.getEspecialidadByName(this.filterName.trim());
-		resetForm();
-		if(especialidades.isEmpty()) {
-			Message.messageInfo("No se encontraron especialidades");
-		}
-	} catch(Exception e) {
-		Message.messageError("Error Especialidad Search" + e.getMessage());
+		try {
+			especialidades = especialidadBusiness.getEspecialidadByName(this.filterName.trim());
+			resetForm();
+			if (especialidades.isEmpty()) {
+				Message.messageInfo("No se encontraron especialidades");
+			}
+		} catch (Exception e) {
+			Message.messageError("Error Especialidad Search" + e.getMessage());
 		}
 	}
-	
+
 	public void selectEspecialidad(SelectEvent e) {
 		this.especialidadSelect = (Especialidad) e.getObject();
 	}
-		
+
 	public void resetForm() {
-		this.filterName="";
+		this.filterName = "";
 		this.especialidad = new Especialidad();
 	}
 
 	public Especialidad getEspecialidad() {
 		return especialidad;
 	}
-	
+
 	public void setEspecialidad(Especialidad especialidad) {
 		this.especialidad = especialidad;
 	}
-	
-	public List<Especialidad> getEspecialidades(){
+
+	public List<Especialidad> getEspecialidades() {
 		return especialidades;
 	}
 
@@ -162,6 +155,5 @@ public class EspecialidadController implements Serializable{
 	public void setEspecialidades(List<Especialidad> especialidades) {
 		this.especialidades = especialidades;
 	}
-	
-	
+
 }

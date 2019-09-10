@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Clientes")
+@Table(name = "Clientes")
 public class Client {
 
 	@Id
@@ -21,8 +21,5 @@ public class Client {
 	public void setIdCliente(Long id) {
 		this.id = id;
 	}
-	
-	
-	
-	
+
 }

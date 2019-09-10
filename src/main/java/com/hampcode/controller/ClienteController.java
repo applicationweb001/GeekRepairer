@@ -16,25 +16,25 @@ import com.hampcode.util.Message;
 @Named
 @SessionScoped
 public class ClienteController implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private ClienteBusiness clienteBusiness;
-	
+
 	private Client cliente;
 	private List<Client> clientes;
 	private Client clienteSeleccion;
 	private String filtradocliente;
-	
+
 	@PostConstruct
 	public void init() {
-		cliente=new Client();
-		clientes=new ArrayList<Client>();
+		cliente = new Client();
+		clientes = new ArrayList<Client>();
 		getAllClientes();
-		
+
 	}
-	
+
 	public void getAllClientes() {
 		try {
 			clientes = clienteBusiness.getAll();
@@ -42,7 +42,7 @@ public class ClienteController implements Serializable {
 			Message.messageError("Error Carga de Clientes :" + e.getMessage());
 		}
 	}
-	
+
 	public String newClient() {
 		resetForm();
 		return "insert.xhtml";
@@ -51,7 +51,7 @@ public class ClienteController implements Serializable {
 	public String listClient() {
 		return "list.xhtml";
 	}
-	
+
 	public String saveCliente() {
 		String view = "";
 		try {
@@ -73,6 +73,7 @@ public class ClienteController implements Serializable {
 
 		return view;
 	}
+
 	public String editClient() {
 		String view = "";
 		try {
@@ -89,7 +90,7 @@ public class ClienteController implements Serializable {
 
 		return view;
 	}
-	
+
 	public void searchClientePorNombre() {
 		try {
 
@@ -105,11 +106,10 @@ public class ClienteController implements Serializable {
 		}
 	}
 
-	
 	public void resetForm() {
-		this.filtradocliente="";
-		this.cliente=new Client();
-		
+		this.filtradocliente = "";
+		this.cliente = new Client();
+
 	}
 
 	public ClienteBusiness getClienteBusiness() {
@@ -151,13 +151,5 @@ public class ClienteController implements Serializable {
 	public void setFiltradocliente(String filtradocliente) {
 		this.filtradocliente = filtradocliente;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

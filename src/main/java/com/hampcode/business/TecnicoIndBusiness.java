@@ -16,26 +16,24 @@ public class TecnicoIndBusiness implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	@Inject
-	private TecnicoIndRepository tecnicoIndRepository; 
+	private TecnicoIndRepository tecnicoIndRepository;
+
 	@Transactional
-	public long insert(tecnicoIndependiente tecnicoInd) throws Exception
-	{
+	public long insert(tecnicoIndependiente tecnicoInd) throws Exception {
 		return tecnicoIndRepository.insert(tecnicoInd);
 	}
-	
+
 	@Transactional
-	public Long update(tecnicoIndependiente tecnicoInd) throws Exception{
+	public Long update(tecnicoIndependiente tecnicoInd) throws Exception {
 		return tecnicoIndRepository.update(tecnicoInd);
 	}
-	
-	
+
 	public List<tecnicoIndependiente> getAll() throws Exception {
 		return tecnicoIndRepository.findAll();
 	}
-	
-	public List<tecnicoIndependiente> gettecnicoIndByName(String name) throws Exception{
+
+	public List<tecnicoIndependiente> gettecnicoIndByName(String name) throws Exception {
 		return tecnicoIndRepository.findByName(name);
 	}
-	
 
 }
