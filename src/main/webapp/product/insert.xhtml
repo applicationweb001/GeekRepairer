@@ -8,6 +8,7 @@
 <h:head></h:head>
 <body>
 
+
 	<ui:composition template="/WEB-INF/templates/master.xhtml">
 		<ui:define name="content">
 			<h:form id="frm">
@@ -16,10 +17,10 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Guardar" icon="ui-icon-disk" 
-						action="#{productController.saveProduct()}" ajax="false"/>
+						action="#{tecRemotoController.saveTecnico()}" ajax="false"/>
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-						  action="#{productController.listProduct()}"
+						  action="#{tecRemotoController.listTecnico()}"
 						  immediate="true"
 						  ajax="false"/>
 					</f:facet>
@@ -27,21 +28,15 @@
 
 
 				<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
-					<p:outputLabel value="Producto:" for="txtName" />
+					<p:outputLabel value="Tecnico:" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
-						value="#{productController.product.name}" />
-					<p:outputLabel value="Proveedor" for="txtSupplier" />
-					<p:inputText id="txtSupplier" required="true" maxlength="45"
-						value="#{productController.product.supplier}" />
-					<p:outputLabel value="Categoria" for="txtCategory" />
-					<p:inputText id="txtCategory" required="true" maxlength="45"
-						value="#{productController.product.category}" />
-					<p:outputLabel value="Precio Unitario" for="txtUnitPrice" />
-					<p:inputText id="txtUnitPrice" required="true" maxlength="45"
-						value="#{productController.product.unitPrice}" />
-					<p:outputLabel value="Stock" for="txtStock" />
-					<p:inputText id="txtStock" required="true" maxlength="45"
-						value="#{productController.product.unitsInStock}" />
+						value="#{tecRemotoController.tecnico.nombre}" />
+					<p:outputLabel value="Genero" for="txtGenero" />
+					<p:inputText id="txtGenero" required="true" maxlength="45"
+						value="#{tecRemotoController.tecnico.genero}" />
+					<p:outputLabel value="Email" for="txtEmail" />
+					<p:inputText id="txtEmail" required="true" maxlength="45"
+						value="#{tecRemotoController.tecnico.email}" />
 				</p:panelGrid>
 				<br></br>
 

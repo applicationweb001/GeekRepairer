@@ -16,11 +16,11 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
-						  action="#{productController.newProduct()}"
+						  action="#{tecRemotoController.newTecnico()}"
 						  ajax="false"/>
 						
 						 <p:commandButton value="Editar" icon="ui-icon-disk"
-						  action="#{productController.editProduct()}"
+						  action="#{tecRemotoController.editTecRemoto()}"
 						  ajax="false"/>
 						
 
@@ -30,38 +30,38 @@
 
 				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
 					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
-					<p:inputText id="txtSearchName"  value="#{productController.filterName}" />
+					<p:inputText id="txtSearchName"  value="#{tecRemotoController.filterName}" />
 					<p:commandButton icon="ui-icon-search" 
-					  actionListener="#{productController.searchProductByName}"
+					  actionListener="#{tecRemotoController.searchTecRemotoByName}"
 					  update=":frm:datTabProducts :frm:men"/>
 				</p:panelGrid>
 
-				<p:dataTable id="datTabProducts"
-					emptyMessage="No existen productos registrados"
-					value="#{productController.products}" var="product"
+				<p:dataTable id="datTabTecnicos"
+					emptyMessage="No existen tecnicos registrados"
+					value="#{tecRemotoController.tecnicos}" var="tecnico"
 					
-					rowKey="#{product.id}"
+					rowKey="#{tecnico.id}"
 					selectionMode="single"
-					selection="#{productController.productSelect}"
+					selection="#{tecRemotoController.selectTecRemoto}"
 					
 					paginator="true" rows="10">
 					
 					
 					<p:ajax event="rowSelect"
-						listener="#{productController.selectProduct}" />
+						listener="#{tecRemotoController.selectTecRemoto}" />
 					
 
 					<p:column headerText="Id">
-						<p:outputLabel value="#{product.id}" />
+						<p:outputLabel value="#{tecnicos.id}" />
 					</p:column>
-					<p:column headerText="Producto">
-						<p:outputLabel value="#{product.name}" />
+					<p:column headerText="Tecnico">
+						<p:outputLabel value="#{tecnicos.name}" />
 					</p:column>
-					<p:column headerText="Proveedor">
-						<p:outputLabel value="#{product.supplier.name}" />
+					<p:column headerText="Genero">
+						<p:outputLabel value="#{tecnicos.genero.name}" />
 					</p:column>
-					<p:column headerText="Categoria">
-						<p:outputLabel value="#{product.category}" />
+					<p:column headerText="Email">
+						<p:outputLabel value="#{tecnicos.email}" />
 					</p:column>
 					
 				</p:dataTable>
@@ -72,6 +72,8 @@
 			</h:form>
 		</ui:define>
 	</ui:composition>
+
+
 
 </body>
 </html>

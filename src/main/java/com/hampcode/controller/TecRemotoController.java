@@ -96,7 +96,7 @@ public class TecRemotoController implements Serializable {
 		return view;
 	}
 
-	public String editProduct() {
+	public String editTecRemoto() {
 		String view = "";
 		try {
 			if (this.tecnicoSelect != null) {
@@ -113,7 +113,7 @@ public class TecRemotoController implements Serializable {
 		return view;
 	}
 
-	public void searchProductByName() {
+	public void searchTecRemotoByName() {
 		try {
 
 			tecnicos = tecnicoBusiness.getTecnicosByName(this.filterName.trim());
@@ -162,7 +162,7 @@ public class TecRemotoController implements Serializable {
 		this.tecnicos = tecnicos;
 	}
 
-	//fddv
+	
 
 
 }
