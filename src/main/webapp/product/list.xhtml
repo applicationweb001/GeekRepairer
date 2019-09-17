@@ -38,7 +38,7 @@
 
 				<p:dataTable id="datTabEspecialidades"
 					emptyMessage="No existen especialidades registrados"
-					value="#{especialidadController.especialidades}" var="product"
+					value="#{especialidadController.especialidades}" var="especialidad"
 					
 					rowKey="#{especialidad.id}"
 					selectionMode="single"
@@ -53,7 +53,7 @@
 						<p:outputLabel value="#{especialidad.nombre}" />
 					</p:column>
 					<p:column headerText="Descripción">
-						<p:outputLabel value="#{especialidad.Descripcion}" />
+						<p:outputLabel value="#{especialidad.descripcion}" />
 					</p:column>
 					
 					
