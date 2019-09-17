@@ -16,53 +16,46 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
-						  action="#{productController.newProduct()}"
+						  action="#{especialidadController.newEspecialidad()}"
 						  ajax="false"/>
-						
+						  						
 						 <p:commandButton value="Editar" icon="ui-icon-disk"
-						  action="#{productController.editProduct()}"
+						  action="#{especialidadController.editEspecialidad()}"
 						  ajax="false"/>
 						
 
 					</f:facet>
 				</p:toolbar>
 
-
 				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
 					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
-					<p:inputText id="txtSearchName"  value="#{productController.filterName}" />
+					<p:inputText id="txtSearchName"  value="#{especialidadController.filterName}" />
 					<p:commandButton icon="ui-icon-search" 
-					  actionListener="#{productController.searchProductByName}"
-					  update=":frm:datTabProducts :frm:men"/>
+					  actionListener="#{especialidadController.searchEspecialidadByName}"
+					  update=":frm:datTabEspecialidades :frm:men"/>
 				</p:panelGrid>
 
-				<p:dataTable id="datTabProducts"
-					emptyMessage="No existen productos registrados"
-					value="#{productController.products}" var="product"
-					
-					rowKey="#{product.id}"
-					selectionMode="single"
-					selection="#{productController.productSelect}"
-					
-					paginator="true" rows="10">
-					
-					
-					<p:ajax event="rowSelect"
-						listener="#{productController.selectProduct}" />
-					
 
+				<p:dataTable id="datTabEspecialidades"
+					emptyMessage="No existen especialidades registrados"
+					value="#{especialidadController.especialidades}" var="product"
+					
+					rowKey="#{especialidad.id}"
+					selectionMode="single"
+					selection="#{especialidadController.especialidadSelect}"					
+					paginator="true" rows="10">									
+					<p:ajax event="rowSelect"
+						listener="#{especialidadController.selectEspecialidad}" />
 					<p:column headerText="Id">
-						<p:outputLabel value="#{product.id}" />
+						<p:outputLabel value="#{especialidad.id}" />
 					</p:column>
-					<p:column headerText="Producto">
-						<p:outputLabel value="#{product.name}" />
+					<p:column headerText="Especialidad">
+						<p:outputLabel value="#{especialidad.nombre}" />
 					</p:column>
-					<p:column headerText="Proveedor">
-						<p:outputLabel value="#{product.supplier.name}" />
+					<p:column headerText="Descripción">
+						<p:outputLabel value="#{especialidad.Descripcion}" />
 					</p:column>
-					<p:column headerText="Categoria">
-						<p:outputLabel value="#{product.category}" />
-					</p:column>
+					
 					
 				</p:dataTable>
 
