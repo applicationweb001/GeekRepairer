@@ -40,7 +40,7 @@ public class EspecialidadRepository implements Serializable{
 	
 	public List<Especialidad> findAll() throws Exception{
 		List<Especialidad> especialidades = new ArrayList<>();
-		TypedQuery<Especialidad> query = em.createQuery("From Especialidad e Where e.id=?1",
+		TypedQuery<Especialidad> query = em.createQuery("FROM Especialidad e",
 		Especialidad.class);
 		
 		especialidades = query.getResultList();		
@@ -51,7 +51,7 @@ public class EspecialidadRepository implements Serializable{
 	{
 		Especialidad especialidadFound;
 		
-		TypedQuery<Especialidad> query = em.createQuery("From Especialidad e Where e.id =?1",
+		TypedQuery<Especialidad> query = em.createQuery("FROM Especialidad e WHERE e.id =?1",
 				Especialidad.class);
 		
 		query.setParameter(1, id);
