@@ -9,8 +9,10 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.SelectEvent;
+
 import com.hampcode.business.ClienteBusiness;
-import com.hampcode.model.entity.Client;
+import com.hampcode.model.entity.Cliente;
 import com.hampcode.util.Message;
 
 @Named
@@ -22,15 +24,15 @@ public class ClienteController implements Serializable {
 	@Inject
 	private ClienteBusiness clienteBusiness;
 	
-	private Client cliente;
-	private List<Client> clientes;
-	private Client clienteSeleccion;
-	private String filtradocliente;
+	private Cliente cliente;
+	private List<Cliente> clientes;
+	private Cliente clienteSelection;
+	private String filterName;
 	
 	@PostConstruct
 	public void init() {
-		cliente=new Client();
-		clientes=new ArrayList<Client>();
+		cliente=new Cliente();
+		clientes=new ArrayList<Cliente>();
 		getAllClientes();
 		
 	}
@@ -43,12 +45,12 @@ public class ClienteController implements Serializable {
 		}
 	}
 	
-	public String newClient() {
+	public String newCliente() {
 		resetForm();
 		return "insert.xhtml";
 	}
 
-	public String listClient() {
+	public String listCliente() {
 		return "list.xhtml";
 	}
 	
@@ -56,7 +58,7 @@ public class ClienteController implements Serializable {
 		String view = "";
 		try {
 
-			if (cliente.getIdCliente() != null) {
+			if (cliente.getId() != null) {
 				clienteBusiness.update(cliente);
 				Message.messageInfo("Registro actualizado exitosamente");
 			} else {
@@ -73,11 +75,11 @@ public class ClienteController implements Serializable {
 
 		return view;
 	}
-	public String editClient() {
+	public String editCliente() {
 		String view = "";
 		try {
-			if (this.clienteSeleccion != null) {
-				this.cliente = clienteSeleccion;
+			if (this.clienteSelection != null) {
+				this.cliente = this.clienteSelection;
 
 				view = "update";// Vista
 			} else {
@@ -93,7 +95,7 @@ public class ClienteController implements Serializable {
 	public void searchClientePorNombre() {
 		try {
 
-			clientes = clienteBusiness.getClientePorNombre(this.filtradocliente.trim());
+			clientes = clienteBusiness.getClientePorNombre(this.filterName.trim());
 			resetForm();
 			if (clientes.isEmpty()) {
 				Message.messageInfo("No se encontraron clientes");
@@ -105,10 +107,15 @@ public class ClienteController implements Serializable {
 		}
 	}
 
+	public void selectCliente(SelectEvent e)
+	{
+		this.cliente = (Cliente) e.getObject();
+	}
+	
 	
 	public void resetForm() {
-		this.filtradocliente="";
-		this.cliente=new Client();
+		this.filterName="";
+		this.cliente = new Cliente();
 		
 	}
 
@@ -120,44 +127,36 @@ public class ClienteController implements Serializable {
 		this.clienteBusiness = clienteBusiness;
 	}
 
-	public Client getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Client cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-	public List<Client> getClientes() {
+	public List<Cliente> getClientes() {
 		return clientes;
 	}
 
-	public void setClientes(List<Client> clientes) {
+	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
 
-	public Client getClienteSeleccion() {
-		return clienteSeleccion;
+	public Cliente getClienteSelection() {
+		return clienteSelection;
 	}
 
-	public void setClienteSeleccion(Client clienteSeleccion) {
-		this.clienteSeleccion = clienteSeleccion;
+	public void setClienteSelection(Cliente clienteSelection) {
+		this.clienteSelection = clienteSelection;
 	}
 
-	public String getFiltradocliente() {
-		return filtradocliente;
+	public String getFilterName() {
+		return filterName;
 	}
 
-	public void setFiltradocliente(String filtradocliente) {
-		this.filtradocliente = filtradocliente;
+	public void setFilterName(String filterName) {
+		this.filterName = filterName;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 
 }

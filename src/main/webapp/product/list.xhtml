@@ -16,11 +16,11 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
-						  action="#{productController.newProduct()}"
+						  action="#{clienteController.newCliente()}"
 						  ajax="false"/>
 						
 						 <p:commandButton value="Editar" icon="ui-icon-disk"
-						  action="#{productController.editProduct()}"
+						  action="#{clienteController.editCliente()}"
 						  ajax="false"/>
 						
 
@@ -30,38 +30,48 @@
 
 				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
 					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
-					<p:inputText id="txtSearchName"  value="#{productController.filterName}" />
+					<p:inputText id="txtSearchName"  value="#{clienteController.filterName}" />
 					<p:commandButton icon="ui-icon-search" 
-					  actionListener="#{productController.searchProductByName}"
-					  update=":frm:datTabProducts :frm:men"/>
+					  actionListener="#{clienteController.searchClientePorNombre}"
+					  update=":frm:datTabClientes :frm:men"/>
 				</p:panelGrid>
 
-				<p:dataTable id="datTabProducts"
+				<p:dataTable id="datTabClientes"
 					emptyMessage="No existen productos registrados"
-					value="#{productController.products}" var="product"
+					value="#{clienteController.clientes}" var="product"
 					
-					rowKey="#{product.id}"
+					rowKey="#{cliente.id}"
 					selectionMode="single"
-					selection="#{productController.productSelect}"
+					selection="#{clienteController.clienteSelection}"
 					
 					paginator="true" rows="10">
 					
 					
 					<p:ajax event="rowSelect"
-						listener="#{productController.selectProduct}" />
+						listener="#{clienteController.clienteSelection}" />
 					
 
 					<p:column headerText="Id">
-						<p:outputLabel value="#{product.id}" />
+						<p:outputLabel value="#{cliente.id}" />
 					</p:column>
-					<p:column headerText="Producto">
-						<p:outputLabel value="#{product.name}" />
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{cliente.nombre}" />
 					</p:column>
-					<p:column headerText="Proveedor">
-						<p:outputLabel value="#{product.supplier.name}" />
+					<p:column headerText="Apellido">
+						<p:outputLabel value="#{cliente.apellido}" />
 					</p:column>
-					<p:column headerText="Categoria">
-						<p:outputLabel value="#{product.category}" />
+					
+					
+					<p:column headerText="telefono">
+						<p:outputLabel value="#{cliente.telefono}" />
+					</p:column>
+					
+					<p:column headerText="email">
+						<p:outputLabel value="#{cliente.email}" />
+					</p:column>
+					
+					<p:column headerText="direccion">
+						<p:outputLabel value="#{cliente.direccion}" />
 					</p:column>
 					
 				</p:dataTable>

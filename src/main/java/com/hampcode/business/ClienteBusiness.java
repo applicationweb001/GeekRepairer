@@ -7,7 +7,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.transaction.Transactional;
 
-import com.hampcode.model.entity.Client;
+import com.hampcode.model.entity.Cliente;
 import com.hampcode.model.repository.ClienteRepository;
 
 @Named
@@ -20,22 +20,22 @@ public class ClienteBusiness implements Serializable{
 	
 	@Transactional
 	
-	public Long insert(Client cliente)throws Exception{
+	public Long insert(Cliente cliente)throws Exception{
 		return clienteRepository.insert(cliente);
 	}
 	
 	@Transactional
-	public Long update(Client cliente) throws Exception{
+	public Long update(Cliente cliente) throws Exception{
 		return clienteRepository.insert(cliente);
 	}
 	
 	
-	public List<Client> getAll() throws Exception {
+	public List<Cliente> getAll() throws Exception {
 		return clienteRepository.findAll();
 	}
 	
 	
-	public List<Client> getClientePorNombre(String nombre) throws Exception{
+	public List<Cliente> getClientePorNombre(String nombre) throws Exception{
 		return clienteRepository.findByName(nombre);
 	}
 	
