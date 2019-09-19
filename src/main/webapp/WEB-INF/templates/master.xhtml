@@ -5,45 +5,49 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
-	<title><ui:insert name="pageTitle">Taller</ui:insert></title>
+	<title><ui:insert name="pageTitle">Geek Repairer</ui:insert></title>
 </h:head>
 
-<body>
+<body style="font-family: Century Gothic">
 	<ui:insert name="header">
 		<h:form>
-		
-		<div class="ui-g">
-	
-		<p:commandButton icon="pi pi-save" oncomplete="PF('sidebar1').show()" />
-		<h1 style="font-weight:normal">Geek Repairer</h1>
-			
-		</div>
-		
-			
-			
-		<div class="ui-g">
-			
-			<p:menubar autoDisplay="false">
-				
-				<p:submenu label="Mantenedores" icon="ui-icon-pencil">
-					<p:menuitem icon="ui-icon-document" value="Especialidades"
-						url="/especialidades/list.xhtml" />
-					
-					
-				</p:submenu>
-				
-			
-			</p:menubar>
-				
-		<p:button icon ="pi pi-save" oncomplete="PF('sidebar1').show()"   /> 
-			</div>
-			
-			
-				<p:sidebar widgetVar="sidebar1" baseZIndex="10000">
-   				 <h1 style="font-weight:normal">Menu Sidebar</h1>
-    			<p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()"/>
-				</p:sidebar>
-			
+
+
+			<p:panelGrid id="panGriBuscador" columns="2" style="width:100%">
+				<p:commandButton icon="ui-icon-note" value="Sidebar"
+					oncomplete="PF('sidebar1').show()" />
+
+				<h1 style="font-weight: normal">Geek Repairer</h1>
+			</p:panelGrid>
+
+
+			<p:sidebar widgetVar="sidebar1" baseZIndex="10000">
+				<h1 style="font-weight: normal">Menú Sidebar</h1>
+				<h:form>
+					<p:menu toggleable="true">
+						<p:submenu label="Especialidades">
+							<p:menuitem value="Lista" url="/product/list.xhtml"
+								icon="pi pi-save" />
+							<p:menuitem value="Insertar" url="/product/insert.xhtml"
+								icon="pi pi-refresh" />
+						</p:submenu>
+						<p:submenu label="Categorias">
+							<p:menuitem value="Delete" action="#{menuView.delete}"
+								ajax="false" icon="pi pi-times" />
+						</p:submenu>
+						<p:submenu label="Navigations">
+							<p:menuitem value="External" url="http://www.primefaces.org"
+								icon="pi pi-home" />
+							<p:menuitem value="Internal" icon="pi pi-star" />
+						</p:submenu>
+					</p:menu>
+
+				</h:form>
+
+				<p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()" />
+
+			</p:sidebar>
+
 		</h:form>
 	</ui:insert>
 

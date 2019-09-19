@@ -7,19 +7,14 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Especialidad")
+@Table(name = "especialidades")
 public class Especialidad {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long Id;
 	private String nombre;
-	private String Descripcion;
+	private String descripcion;
 		
-		
-	
-	
-	
-	
 	
 	public Long getId() {
 		return Id;
@@ -34,10 +29,10 @@ public class Especialidad {
 		this.nombre = nombre;
 	}
 	public String getDescripcion() {
-		return Descripcion;
+		return descripcion;
 	}
 	public void setDescripcion(String descripcion) {
-		Descripcion = descripcion;
+		this.descripcion = descripcion;
 	}
 		
 	

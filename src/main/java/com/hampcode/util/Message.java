@@ -26,7 +26,6 @@ public class Message {
 		menJSF.setSeverity(severity);
 		menJSF.setSummary(msj);
 		getContext().addMessage(null, menJSF);
-
 	}
 
 }

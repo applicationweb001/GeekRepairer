@@ -51,7 +51,8 @@ public class EspecialidadController implements Serializable{
 	public String newEspecialidad()
 	{
 		resetForm();
-		return "insert.xhtml";
+		Message.messageInfo("sifuncionooo");
+		return "/product/insert.xhtml";
 	}
 	
 	public String listEspecialidad() {

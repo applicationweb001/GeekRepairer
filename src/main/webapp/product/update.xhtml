@@ -11,11 +11,11 @@
 	<ui:composition template="/WEB-INF/templates/master.xhtml">
 		<ui:define name="content">
 			<h:form id="frm">
-				<p:growl id="men" />
+				<p:growl id="men"/>
 
 				<p:toolbar>
 					<f:facet name="right">
-						<p:commandButton value="Gauardar" icon="ui-icon-disk" 
+						<p:commandButton value="Guardar" icon="ui-icon-disk" 
 						action="#{especialidadController.saveEspecialidad()}" ajax="false"/>
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
@@ -27,12 +27,17 @@
 
 
 				<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
+				
 					<p:outputLabel value="Especialidad:" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
 						value="#{especialidadController.especialidad.nombre}" />
-					<p:outputLabel value="Descripcion" for="txtSupplier" />
-					<p:inputText id="txtSupplier" required="true" maxlength="45"
+					
+					
+					
+					<p:outputLabel value="Descripcion" for="txtDescripcion" />
+					<p:inputText id="txtDescripcion" required="true" maxlength="45"
 						value="#{especialidadController.especialidad.descripcion}" />
+					
 				</p:panelGrid>
 				<br></br>
 

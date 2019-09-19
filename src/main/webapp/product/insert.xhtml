@@ -30,12 +30,13 @@
 					<p:outputLabel value="Especialidad:" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
 						value="#{especialidadController.especialidad.nombre}" />
-					<p:outputLabel value="Descripcion" for="txtSupplier" />
-					<p:inputText id="txtSupplier" required="true" maxlength="45"
-						value="#{especialidadController.especialidad.descripcion}" />
+						
+					<p:outputLabel value="Descripcion:" for="txtDescripcion" />
+					<p:inputTextarea id="txtDescripcion"  required="true" rows="6" cols="33" value="#{especialidadController.especialidad.descripcion}"  />
+					
+				
 				</p:panelGrid>
 				<br></br>
-
 
 
 			</h:form>

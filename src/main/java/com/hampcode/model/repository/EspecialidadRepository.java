@@ -64,7 +64,7 @@ public class EspecialidadRepository implements Serializable{
 	{
 		List<Especialidad> especialidades = new ArrayList<>();
 		
-		TypedQuery<Especialidad> query = em.createQuery("From Especialidad e WHERE e.name LIKE ?1",
+		TypedQuery<Especialidad> query = em.createQuery("FROM Especialidad e WHERE e.nombre LIKE ?1",
 				Especialidad.class);
 		query.setParameter(1, "%" + nombre + "%");
 		especialidades = query.getResultList();
