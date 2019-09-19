@@ -10,74 +10,67 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
-import com.hampcode.model.entity.tecnicoIndependiente;
+import com.hampcode.model.entity.TecnicoInd;
 
 @Named
-
 public class TecnicoIndRepository implements Serializable {
-
+	
 	private static final long serialVersionUID = 1L;
+	
+@PersistenceContext (unitName="pwPU")
+private EntityManager em;
 
-	@PersistenceContext(unitName = "pwPU")
-	private EntityManager em;
+public Long insert(TecnicoInd tecnicoInd) throws Exception
+{
+	em.persist(tecnicoInd);
+	return tecnicoInd.getId();
+}
 
-	public long insert(tecnicoIndependiente tecnicoind) throws Exception {
-     em.persist(tecnicoind);
-     return tecnicoind.getIdTecInd();
-	}
-	
-	
-	public Long update(tecnicoIndependiente tecnicoind) throws Exception {
-		em.merge(tecnicoind);
-		return tecnicoind.getIdTecInd();
-	}
-	
-	
-	public void delete(tecnicoIndependiente tecnicoind) throws Exception {
-		em.remove(tecnicoind);
-	}
+public Long update(TecnicoInd tecnicoInd) throws Exception {
+	em.merge(tecnicoInd);
+	return tecnicoInd.getId();
+}
 
+public void delete(TecnicoInd tecnicoInd) throws Exception {
+	em.remove(tecnicoInd);
+}
+
+
+public List<TecnicoInd> findAll() throws Exception{
+	List<TecnicoInd> tecnicoInds=new ArrayList<>();
 	
+	TypedQuery<TecnicoInd> query=em.createQuery("FROM TecnicoInd t"
+			,TecnicoInd.class);
+	tecnicoInds=query.getResultList();
 	
-	public List<tecnicoIndependiente> findAll() throws Exception{
-		List<tecnicoIndependiente> tecnicoInd=new ArrayList<>();
-		
-		TypedQuery<tecnicoIndependiente> query=em.createQuery("FROM TecIndependiente t"
-				,tecnicoIndependiente.class);
-		tecnicoInd=query.getResultList();
-		
-		return tecnicoInd;
-	}
+	return tecnicoInds;
+}
+
+public Optional<TecnicoInd> findById(Long id) throws Exception{
+	TecnicoInd tecnicoFound;
 	
-	
-	public Optional<tecnicoIndependiente> findById(Long id) throws Exception{
-		tecnicoIndependiente tecnicoIndfound;
-		
-		TypedQuery<tecnicoIndependiente> query=em.createQuery("FROM TecIndependiente p WHERE p.id=?1"
-				,tecnicoIndependiente.class);
-		
-		
-		
-		query.setParameter(1, id);
-		tecnicoIndfound=query.getSingleResult();
-		
-		return Optional.of(tecnicoIndfound);
-	}
-	
-	
-	public List<tecnicoIndependiente> findByName(String name) throws Exception{
-		List<tecnicoIndependiente> tecnicoInd=new ArrayList<>();
-		
-		TypedQuery<tecnicoIndependiente> query=em.createQuery("FROM TecIndependiente p WHERE p.name LIKE ?1"
-				,tecnicoIndependiente.class);
-		query.setParameter(1, "%"+name+"%");
-		tecnicoInd=query.getResultList();
-		
-		return tecnicoInd;
-		
-	}
+	TypedQuery<TecnicoInd> query=em.createQuery("FROM TecnicoInd p WHERE p.id=?1"
+			,TecnicoInd.class);
 	
 	
 	
+	query.setParameter(1, id);
+	tecnicoFound=query.getSingleResult();
+	
+	return Optional.of(tecnicoFound);
+	
+}
+
+public List<TecnicoInd> findByName(String name) throws Exception{
+	List<TecnicoInd> tecnicoInds=new ArrayList<>();
+	
+	TypedQuery<TecnicoInd> query=em.createQuery("FROM TecnicoInd p WHERE p.name LIKE ?1"
+			,TecnicoInd.class);
+	query.setParameter(1, "%"+name+"%");
+	tecnicoInds=query.getResultList();
+	
+	return tecnicoInds;
+}
+
 	
 }

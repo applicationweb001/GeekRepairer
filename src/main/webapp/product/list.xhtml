@@ -16,13 +16,11 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
-						  action="#{productController.newProduct()}"
-						  ajax="false"/>
-						
-						 <p:commandButton value="Editar" icon="ui-icon-disk"
-						  action="#{productController.editProduct()}"
-						  ajax="false"/>
-						
+							action="#{tecnicoIndController.newTecnicoInd()}" ajax="false" />
+
+						<p:commandButton value="Editar" icon="ui-icon-disk"
+							action="#{tecnicoIndController.editTecnicoInd()}" ajax="false" />
+
 
 					</f:facet>
 				</p:toolbar>
@@ -30,43 +28,44 @@
 
 				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
 					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
-					<p:inputText id="txtSearchName"  value="#{productController.filterName}" />
-					<p:commandButton icon="ui-icon-search" 
-					  actionListener="#{productController.searchProductByName}"
-					  update=":frm:datTabProducts :frm:men"/>
+					<p:inputText id="txtSearchName"
+						value="#{tecnicoIndController.filterName}" />
+					<p:commandButton icon="ui-icon-search"
+						actionListener="#{tecnicoIndController.searchTecnicoIndByName}"
+						update=":frm:datTabTecnicoInds :frm:men" />
 				</p:panelGrid>
 
-				<p:dataTable id="datTabProducts"
-					emptyMessage="No existen productos registrados"
-					value="#{productController.products}" var="product"
-					
-					rowKey="#{product.id}"
-					selectionMode="single"
-					selection="#{productController.productSelect}"
-					
+				<p:dataTable id="datTabTecnicoInds"
+					emptyMessage="No existen tecnicos independientes registrados"
+					value="#{tecnicoIndController.tecnicoInds}" var="tecnicoInd"
+					rowKey="#{tecnicoInd.id}" selectionMode="single"
+					selection="#{tecnicoIndController.tecnicoIndSelect}"
 					paginator="true" rows="10">
-					
-					
+
+
 					<p:ajax event="rowSelect"
-						listener="#{productController.selectProduct}" />
-					
+						listener="#{tecnicoIndController.selectTecnicoInd}" />
+
 
 					<p:column headerText="Id">
-						<p:outputLabel value="#{product.id}" />
+						<p:outputLabel value="#{tecnicoInd.id}" />
 					</p:column>
-					<p:column headerText="Producto">
-						<p:outputLabel value="#{product.name}" />
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{tecnicoInd.nombre}" />
 					</p:column>
-					<p:column headerText="Proveedor">
-						<p:outputLabel value="#{product.supplier.name}" />
+					<p:column headerText="Telefono">
+						<p:outputLabel value="#{tecnicoInd.telefono}" />
 					</p:column>
-					<p:column headerText="Categoria">
-						<p:outputLabel value="#{product.category}" />
+					<p:column headerText="Estado">
+						<p:outputLabel value="#{tecnicoInd.estado}" />
 					</p:column>
-					
+					<p:column headerText="Costo por hora">
+						<p:outputLabel value="#{tecnicoInd.montoHora}" />
+					</p:column>
+
 				</p:dataTable>
 
-				
+
 
 
 			</h:form>
