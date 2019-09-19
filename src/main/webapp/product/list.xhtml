@@ -16,11 +16,19 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
+<<<<<<< HEAD
 						  action="#{especialidadController.newEspecialidad()}"
+=======
+						  action="#{clienteController.newCliente()}"
+>>>>>>> refs/heads/Victor
 						  ajax="false"/>
 						  						
 						 <p:commandButton value="Editar" icon="ui-icon-disk"
+<<<<<<< HEAD
 						  action="#{especialidadController.editEspecialidad()}"
+=======
+						  action="#{clienteController.editCliente()}"
+>>>>>>> refs/heads/Victor
 						  ajax="false"/>
 						
 
@@ -29,12 +37,38 @@
 
 				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
 					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
+<<<<<<< HEAD
 					<p:inputText id="txtSearchName"  value="#{especialidadController.filterName}" />
+=======
+					<p:inputText id="txtSearchName"  value="#{clienteController.filterName}" />
+>>>>>>> refs/heads/Victor
 					<p:commandButton icon="ui-icon-search" 
+<<<<<<< HEAD
 					  actionListener="#{especialidadController.searchEspecialidadByName}"
 					  update=":frm:datTabEspecialidades :frm:men"/>
+=======
+					  actionListener="#{clienteController.searchClientePorNombre}"
+					  update=":frm:datTabClientes :frm:men"/>
+>>>>>>> refs/heads/Victor
 				</p:panelGrid>
 
+<<<<<<< HEAD
+=======
+				<p:dataTable id="datTabClientes"
+					emptyMessage="No existen productos registrados"
+					value="#{clienteController.clientes}" var="product"
+					
+					rowKey="#{cliente.id}"
+					selectionMode="single"
+					selection="#{clienteController.clienteSelection}"
+					
+					paginator="true" rows="10">
+					
+					
+					<p:ajax event="rowSelect"
+						listener="#{clienteController.clienteSelection}" />
+					
+>>>>>>> refs/heads/Victor
 
 				<p:dataTable id="datTabEspecialidades"
 					emptyMessage="No existen especialidades registrados"
@@ -47,15 +81,44 @@
 					<p:ajax event="rowSelect"
 						listener="#{especialidadController.especialidadSelect}" />
 					<p:column headerText="Id">
+<<<<<<< HEAD
 						<p:outputLabel value="#{especialidad.id}" />
+=======
+						<p:outputLabel value="#{cliente.id}" />
+>>>>>>> refs/heads/Victor
 					</p:column>
+<<<<<<< HEAD
 					<p:column headerText="Especialidad">
 						<p:outputLabel value="#{especialidad.nombre}" />
+=======
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{cliente.nombre}" />
+>>>>>>> refs/heads/Victor
 					</p:column>
+<<<<<<< HEAD
 					<p:column headerText="Descripción">
 						<p:outputLabel value="#{especialidad.descripcion}" />
+=======
+					<p:column headerText="Apellido">
+						<p:outputLabel value="#{cliente.apellido}" />
+>>>>>>> refs/heads/Victor
 					</p:column>
 					
+<<<<<<< HEAD
+=======
+					
+					<p:column headerText="telefono">
+						<p:outputLabel value="#{cliente.telefono}" />
+					</p:column>
+					
+					<p:column headerText="email">
+						<p:outputLabel value="#{cliente.email}" />
+					</p:column>
+					
+					<p:column headerText="direccion">
+						<p:outputLabel value="#{cliente.direccion}" />
+					</p:column>
+>>>>>>> refs/heads/Victor
 					
 				</p:dataTable>
 

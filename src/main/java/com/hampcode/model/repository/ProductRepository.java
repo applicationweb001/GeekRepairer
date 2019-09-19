@@ -55,7 +55,6 @@ public class ProductRepository implements Serializable{
 				,Product.class);
 		
 		
-		
 		query.setParameter(1, id);
 		productFound=query.getSingleResult();
 		
