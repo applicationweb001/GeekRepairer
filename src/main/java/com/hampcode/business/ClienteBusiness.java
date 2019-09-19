@@ -27,6 +27,7 @@ public class ClienteBusiness implements Serializable {
 	public Long update(Cliente cliente) throws Exception {
 		return clienteRepository.update(cliente);
 	}
+	
 
 	public List<Cliente> getAll() throws Exception {
 		return clienteRepository.findAll();
