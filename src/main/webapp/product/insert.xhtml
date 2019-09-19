@@ -16,61 +16,25 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Guardar" icon="ui-icon-disk" 
-<<<<<<< HEAD
 						action="#{especialidadController.saveEspecialidad()}" ajax="false"/>
-=======
-						action="#{clienteController.saveCliente()}" ajax="false"/>
->>>>>>> refs/heads/Victor
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-<<<<<<< HEAD
 						  action="#{especialidadController.listEspecialidad()}"
-=======
-						  action="#{clienteController.listCliente()}"
->>>>>>> refs/heads/Victor
 						  immediate="true"
 						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
 
 
-<<<<<<< HEAD
 				<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
 					<p:outputLabel value="Especialidad:" for="txtName" />
-=======
-				<p:panelGrid id="panGridCliente" columns="2" style="width:100%">
-					<p:outputLabel value="Cliente:" for="txtName" />
->>>>>>> refs/heads/Victor
 					<p:inputText id="txtName" required="true" maxlength="45"
-<<<<<<< HEAD
 						value="#{especialidadController.especialidad.nombre}" />
 						
 					<p:outputLabel value="Descripcion:" for="txtDescripcion" />
-					<p:inputTextarea id="txtDescripcion"  required="true" rows="6" cols="33" value="#{especialidadController.especialidad.descripcion}"  />
+					<p:inputTextarea id="txtDescripcion"  maxlength="200"  required="true" rows="6" cols="33" value="#{especialidadController.especialidad.descripcion}"  />
 					
 				
-=======
-						value="#{clienteController.cliente.nombre}" />
-					
-					<p:outputLabel value="Proveedor" for="txtApellido" />
-					<p:inputText id="txtApellido" required="true" maxlength="45"
-						value="#{clienteController.cliente.apellido}" />
-						
-					<p:outputLabel value="Categoria" for="txtCategory" />
-					<p:inputText id="txtCategory" required="true" maxlength="45"
-						value="#{clienteController.cliente.telefono}" />
-					
-					<p:outputLabel value="Direccion" for="txtTelefono" />
-					<p:inputText id="txtTelefono" required="true" maxlength="45"
-						value="#{clienteController.cliente.direccion}" />
-					
-					
-					<p:outputLabel value="Email" for="txtStock" />
-					<p:inputText id="txtStock" required="true" maxlength="45"
-						value="#{clienteController.cliente.email}" />
-					
-					
->>>>>>> refs/heads/Victor
 				</p:panelGrid>
 				<br></br>
 

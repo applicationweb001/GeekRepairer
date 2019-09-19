@@ -34,9 +34,8 @@
 					
 					
 					
-					<p:outputLabel value="Descripcion" for="txtDescripcion" />
-					<p:inputText id="txtDescripcion" required="true" maxlength="45"
-						value="#{especialidadController.especialidad.descripcion}" />
+					<p:outputLabel value="Descripcion:" for="txtDescripcion" />
+					<p:inputTextarea id="txtDescripcion" maxlength="200"  required="true" rows="6" cols="33" value="#{especialidadController.especialidad.descripcion}"  />
 					
 				</p:panelGrid>
 				<br></br>
