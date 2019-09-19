@@ -26,19 +26,16 @@
 				<h:form>
 					<p:menu toggleable="true">
 						<p:submenu label="Especialidades">
-							<p:menuitem value="Lista" url="/product/list_espe.xhtml"
+							<p:menuitem value="Lista" url="/especialidad/list.xhtml"
 								icon="pi pi-save" />
-							<p:menuitem value="Insertar" url="/product/insert_espe.xhtml"
+							<p:menuitem value="Insertar" url="/especialidad/insert.xhtml"
 								icon="pi pi-refresh" />
 						</p:submenu>
-						<p:submenu label="Categorias">
-							<p:menuitem value="Delete" action="#{menuView.delete}"
-								ajax="false" icon="pi pi-times" />
-						</p:submenu>
-						<p:submenu label="Navigations">
-							<p:menuitem value="External" url="http://www.primefaces.org"
-								icon="pi pi-home" />
-							<p:menuitem value="Internal" icon="pi pi-star" />
+						<p:submenu label="Clientes">
+							<p:menuitem value="Lista" url="/cliente/list.xhtml"
+								icon="pi pi-save" />
+							<p:menuitem value="Insertar" url="/cliente/insert.xhtml"
+								icon="pi pi-refresh" />
 						</p:submenu>
 					</p:menu>
 

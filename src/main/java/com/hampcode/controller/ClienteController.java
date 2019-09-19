@@ -47,11 +47,11 @@ public class ClienteController implements Serializable {
 	
 	public String newCliente() {
 		resetForm();
-		return "insert.xhtml";
+		return "/cliente/insert.xhtml";
 	}
 
 	public String listCliente() {
-		return "list.xhtml";
+		return "/cliente/list.xhtml";
 	}
 	
 	public String saveCliente() {
@@ -68,9 +68,14 @@ public class ClienteController implements Serializable {
 			}
 			this.getAllClientes();
 			resetForm();
-			view = "list";
-		} catch (Exception e) {
-			Message.messageError("Error Product :" + e.getStackTrace());
+			view = "/cliente/list.xhtml";
+		} 
+		catch (Exception e) {
+			Message.messageError("Que pasa aqui?");
+				
+			Message.messageError("Error Product1323:" + e.getStackTrace());
+			
+			Message.messageError("Que pasa aqui?");
 		}
 
 		return view;
@@ -79,9 +84,9 @@ public class ClienteController implements Serializable {
 		String view = "";
 		try {
 			if (this.clienteSelection != null) {
-				this.cliente = this.clienteSelection;
+				this.cliente = clienteSelection;
 
-				view = "update";// Vista
+				view = "/cliente/update.xhtml";// Vista
 			} else {
 				Message.messageInfo("Debe seleccionar un cliente");
 			}

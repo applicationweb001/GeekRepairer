@@ -11,40 +11,29 @@ import com.hampcode.model.entity.Especialidad;
 import com.hampcode.model.repository.EspecialidadRepository;
 
 @Named
-public class EspecialidadBusiness implements Serializable{
+public class EspecialidadBusiness implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Inject
 	private EspecialidadRepository especialidadRepository;
-	
+
 	@Transactional
-	public Long insert(Especialidad especialidad) throws Exception
-	{
+	public Long insert(Especialidad especialidad) throws Exception {
 		return especialidadRepository.insert(especialidad);
 	}
-	
+
 	@Transactional
-	public Long update(Especialidad especialidad) throws Exception
-	{
+	public Long update(Especialidad especialidad) throws Exception {
 		return especialidadRepository.update(especialidad);
 	}
-	
-	public List<Especialidad> getAll() throws Exception
-	{
+
+	public List<Especialidad> getAll() throws Exception {
 		return especialidadRepository.findAll();
 	}
-	
-	public List<Especialidad> getEspecialidadByName(String nombre) throws Exception{
+
+	public List<Especialidad> getEspecialidadByName(String nombre) throws Exception {
 		return especialidadRepository.findByName(nombre);
 	}
-	
-	
-}
-	
-	
-	
-	
-	
-	
 
+}

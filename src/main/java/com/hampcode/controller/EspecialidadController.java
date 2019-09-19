@@ -52,11 +52,11 @@ public class EspecialidadController implements Serializable{
 	{
 		resetForm();
 		Message.messageInfo("sifuncionooo");
-		return "/product/insert_espe.xhtml";
+		return "/especialidad/insert.xhtml";
 	}
 	
 	public String listEspecialidad() {
-		return "/product/list_espe.xhtml";
+		return "/especialidad/list.xhtml";
 	}
 		
 	public String saveEspecialidad() {
@@ -73,7 +73,7 @@ public class EspecialidadController implements Serializable{
 		}
 		this.getAllEspecialidades();
 		resetForm();
-		view = "/product/list_espe.xhtml";
+		view = "/especialidad/list.xhtml";
 		
 	}catch(Exception e)
 		{
@@ -88,7 +88,7 @@ public class EspecialidadController implements Serializable{
 			if(this.especialidadSelect != null) {
 				this.especialidad = especialidadSelect;
 				
-				view = "/product/update_espe.xhtml";
+				view = "/especialidad/update.xhtml";
 			}else {
 				Message.messageInfo("Debe seleccionar una especialidad");
 			}
