@@ -28,9 +28,12 @@
 
 
 				<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
-					<p:outputLabel value="Tecnico:" for="txtName" />
+					<p:outputLabel value="Tecnico" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
 						value="#{tecRemotoController.tecnico.nombre}" />
+					<p:outputLabel value="Apellido" for="txtApellido" />
+					<p:inputText id="txtApellido" required="true" maxlength="45"
+						value="#{tecRemotoController.tecnico.apellido}" />	
 					<p:outputLabel value="Genero" for="txtGenero" />
 					<p:inputText id="txtGenero" required="true" maxlength="45"
 						value="#{tecRemotoController.tecnico.genero}" />

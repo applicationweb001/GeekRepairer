@@ -11,7 +11,6 @@ import javax.inject.Named;
 
 import org.primefaces.event.SelectEvent;
 
-
 import com.hampcode.business.TecRemotoBusiness;
 
 import com.hampcode.model.entity.TecRemoto;
@@ -22,14 +21,17 @@ import com.hampcode.util.Message;
 
 public class TecRemotoController implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 
-	
 	@Inject
 	private TecRemotoBusiness tecnicoBusiness;
 
 	private TecRemoto tecnico;
+	private List<TecRemoto> tecnicos;
+	private TecRemoto tecnicoSelect;
+	private String filterName;
+
+
 	public TecRemoto getTecnico() {
 		return tecnico;
 	}
@@ -46,9 +48,6 @@ public class TecRemotoController implements Serializable {
 		this.tecnicoSelect = tecnicoSelect;
 	}
 
-	private List<TecRemoto> tecnicos;
-	private TecRemoto tecnicoSelect;
-	private String filterName;
 
 	@PostConstruct
 	public void init() {
@@ -65,8 +64,14 @@ public class TecRemotoController implements Serializable {
 		}
 	}
 
+	public void resetForm() {
+		this.filterName = " ";
+		this.tecnico = new TecRemoto();
+	}
+
+	
 	public String newTecnico() {
-		resetForm();
+		
 		return "insert.xhtml";
 	}
 
@@ -102,7 +107,7 @@ public class TecRemotoController implements Serializable {
 			if (this.tecnicoSelect != null) {
 				this.tecnico = tecnicoSelect;
 
-				view = "update";
+				view = "/product/update";
 			} else {
 				Message.messageInfo("Debe seleccionar un tecnico");
 			}
@@ -120,7 +125,6 @@ public class TecRemotoController implements Serializable {
 			resetForm();
 			if (tecnicos.isEmpty()) {
 				Message.messageInfo("No se encontraron tecnicos");
-
 			}
 
 		} catch (Exception e) {
@@ -132,10 +136,6 @@ public class TecRemotoController implements Serializable {
 		this.tecnicoSelect = (TecRemoto) e.getObject();
 	}
 
-	public void resetForm() {
-		this.filterName = "";
-		this.tecnico = new TecRemoto();
-	}
 
 	public String getFilterName() {
 		return filterName;
@@ -153,7 +153,6 @@ public class TecRemotoController implements Serializable {
 		this.tecnicoBusiness = tecnicoBusiness;
 	}
 
-	
 	public List<TecRemoto> getTecnicos() {
 		return tecnicos;
 	}
@@ -162,7 +161,9 @@ public class TecRemotoController implements Serializable {
 		this.tecnicos = tecnicos;
 	}
 
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
-
-
+	
 }

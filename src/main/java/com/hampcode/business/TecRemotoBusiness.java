@@ -14,8 +14,6 @@ import com.hampcode.model.repository.TecRemotoRepository;
 public class TecRemotoBusiness implements Serializable{
 
 
-	
-	//dfgdfdg
 	private static final long serialVersionUID = 1L;
 	
 	@Inject

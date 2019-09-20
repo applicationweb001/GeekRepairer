@@ -32,17 +32,17 @@
 					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
 					<p:inputText id="txtSearchName"  value="#{tecRemotoController.filterName}" />
 					<p:commandButton icon="ui-icon-search" 
-					  actionListener="#{tecRemotoController.searchTecRemotoByName}"
-					  update=":frm:datTabProducts :frm:men"/>
+					  actionListener="#{tecRemotoController.searchTecRemotoByName()}"
+					  update=":frm:datTabTecRemoto :frm:men"/>
 				</p:panelGrid>
-
-				<p:dataTable id="datTabTecnicos"
+				
+				<p:dataTable id="datTabTecRemoto"
 					emptyMessage="No existen tecnicos registrados"
 					value="#{tecRemotoController.tecnicos}" var="tecnico"
 					
 					rowKey="#{tecnico.id}"
 					selectionMode="single"
-					selection="#{tecRemotoController.selectTecRemoto}"
+					selection="#{tecRemotoController.tecnicoSelect}"
 					
 					paginator="true" rows="10">
 					
@@ -52,16 +52,19 @@
 					
 
 					<p:column headerText="Id">
-						<p:outputLabel value="#{tecnicos.id}" />
+						<p:outputLabel value="#{tecnico.id}" />
 					</p:column>
 					<p:column headerText="Tecnico">
-						<p:outputLabel value="#{tecnicos.name}" />
+						<p:outputLabel value="#{tecnico.nombre}" />
+					</p:column>
+					<p:column headerText="Apellido">
+						<p:outputLabel value="#{tecnico.apellido}" />
 					</p:column>
 					<p:column headerText="Genero">
-						<p:outputLabel value="#{tecnicos.genero.name}" />
+						<p:outputLabel value="#{tecnico.genero}" />
 					</p:column>
 					<p:column headerText="Email">
-						<p:outputLabel value="#{tecnicos.email}" />
+						<p:outputLabel value="#{tecnico.email}" />
 					</p:column>
 					
 				</p:dataTable>

@@ -16,8 +16,6 @@ import com.hampcode.model.entity.TecRemoto;
 
 @Named
 
-//gdfgd
-
 public class TecRemotoRepository implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -72,7 +70,7 @@ public class TecRemotoRepository implements Serializable{
 	public List<TecRemoto> findByName(String name) throws Exception{
 		List<TecRemoto> tecnicos=new ArrayList<>();
 		
-		TypedQuery<TecRemoto> query=em.createQuery("FROM TecRemoto tec WHERE tec.name LIKE ?1"
+		TypedQuery<TecRemoto> query=em.createQuery("FROM TecRemoto tec WHERE tec.nombre LIKE ?1"
 				,TecRemoto.class);
 		query.setParameter(1, "%"+name+"%");
 		tecnicos=query.getResultList();

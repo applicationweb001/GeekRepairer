@@ -1,5 +1,6 @@
 package com.hampcode.model.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,6 +11,17 @@ import javax.persistence.Table;
 @Table(name = "tecremoto")
 
 public class TecRemoto {
+	
+	
+	
+	@Column(name = "nombre", nullable = false)
+	private String nombre;
+	@Column(name = "apellido", nullable = false)
+	private String apellido;
+	@Column(name = "genero", nullable = false)
+	private String genero;
+	@Column(name = "email", nullable = false)
+	private String email;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -55,13 +67,5 @@ public class TecRemoto {
 		this.email = email;
 	}
 
-	private String nombre;
-	private String apellido;
-	private String genero;
-	private String email;
-	
-	//dnfnfeorgnerog
-	//ddmfemvfkmvfd
-	
 
 }
