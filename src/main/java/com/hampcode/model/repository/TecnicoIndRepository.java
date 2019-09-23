@@ -51,9 +51,6 @@ public Optional<TecnicoInd> findById(Long id) throws Exception{
 	
 	TypedQuery<TecnicoInd> query=em.createQuery("FROM TecnicoInd p WHERE p.id=?1"
 			,TecnicoInd.class);
-	
-	
-	
 	query.setParameter(1, id);
 	tecnicoFound=query.getSingleResult();
 	
@@ -63,7 +60,6 @@ public Optional<TecnicoInd> findById(Long id) throws Exception{
 
 public List<TecnicoInd> findByName(String name) throws Exception{
 	List<TecnicoInd> tecnicoInds=new ArrayList<>();
-	
 	TypedQuery<TecnicoInd> query=em.createQuery("FROM TecnicoInd p WHERE p.nombre LIKE ?1"
 			,TecnicoInd.class);
 	query.setParameter(1, "%"+name+"%");

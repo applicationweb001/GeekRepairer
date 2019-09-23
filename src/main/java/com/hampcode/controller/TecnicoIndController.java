@@ -46,11 +46,11 @@ public class TecnicoIndController implements Serializable {
 
 	public String newTecnicoInd() {
 		resetForm();
-		return "insert.xhtml";
+		return "/TecnicoInd/insert.xhtml";
 	}
 
 	public String listTecnicoInd() {
-		return "list.xhtml";
+		return "/TecnicoInd/list.xhtml";
 	}
 
 	public String saveTecnicoInd() {
@@ -67,7 +67,7 @@ public class TecnicoIndController implements Serializable {
 			}
 			this.getAllTecnicoInds();
 			resetForm();
-			view = "list";
+			view = "/TecnicoInd/list.xhtml";
 		} catch (Exception e) {
 			Message.messageError("Error TecnicoInd :" + e.getStackTrace());
 		}
@@ -81,7 +81,7 @@ public class TecnicoIndController implements Serializable {
 			if (this.tecnicoIndSelect != null) {
 				this.tecnicoInd = tecnicoIndSelect;
 
-				view = "update";// Vista
+				view = "/TecnicoInd/update.xhtml";// Vista
 			} else {
 				Message.messageInfo("Debe seleccionar un tecnico");
 			}
