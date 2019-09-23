@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Guardar" icon="ui-icon-disk"
+							action="#{tecnicoIndController.saveTecnicoInd()}" ajax="false" />
+
+						<p:commandButton value="Regresar" icon="ui-icon-disk"
+							action="#{tecnicoIndController.listTecnicoInd()}"
+							immediate="true" ajax="false" />
+					</f:facet>
+				</p:toolbar>
+
+
+				<p:panelGrid id="panGridTecnicoInd" columns="2" style="width:100%">
+					<p:outputLabel value="Nombre:" for="txtName" />
+					<p:inputText id="txtName" required="true" maxlength="45"
+						value="#{tecnicoIndController.tecnicoInd.nombre}" />
+					<p:outputLabel value="Telefono:" for="txtTelefono" />
+					<p:inputText id="txtTelefono" required="true" maxlength="45"
+						value="#{tecnicoIndController.tecnicoInd.telefono}" />
+					<p:outputLabel value="Estado:" for="txtEstado" />
+					<p:inputText id="txtEstado" required="true" maxlength="45"
+						value="#{tecnicoIndController.tecnicoInd.estado}" />
+					<p:outputLabel value="Costo por hora" for="txtUnitPrice" />
+					<p:inputText id="txtUnitPrice" required="true" maxlength="45"
+						value="#{tecnicoIndController.tecnicoInd.montoHora}" />
+				</p:panelGrid>
+				<br></br>
+
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

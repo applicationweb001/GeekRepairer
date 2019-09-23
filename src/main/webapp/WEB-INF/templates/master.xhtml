@@ -13,6 +13,7 @@
 		<h:form>
 
 
+
 			<p:panelGrid id="panGriBuscador" columns="2" style="width:100%">
 				<p:commandButton icon="ui-icon-note" value="Sidebar"
 					oncomplete="PF('sidebar1').show()" />
@@ -37,6 +38,20 @@
 							<p:menuitem value="Insertar" url="/cliente/insert.xhtml"
 								icon="pi pi-refresh" />
 						</p:submenu>
+						<p:submenu label="Tecnicos Ind.">
+							<p:menuitem value="Lista" url="/TecnicoInd/list.xhtml"
+								icon="pi pi-save" />
+							<p:menuitem value="Insertar" url="/TecnicoInd/insert.xhtml"
+								icon="pi pi-refresh" />
+						</p:submenu>
+						<p:submenu label="Tecnicos Remoto">
+							<p:menuitem value="Lista" url="/TecnicoInd/list.xhtml"
+								icon="pi pi-save" />
+							<p:menuitem value="Insertar" url="/TecnicoInd/insert.xhtml"
+								icon="pi pi-refresh" />
+						</p:submenu>
+
+							
 					</p:menu>
 
 				</h:form>
@@ -44,6 +59,7 @@
 				<p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()" />
 
 			</p:sidebar>
+
 
 		</h:form>
 	</ui:insert>
