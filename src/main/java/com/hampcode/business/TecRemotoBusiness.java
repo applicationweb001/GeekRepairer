@@ -39,8 +39,5 @@ public class TecRemotoBusiness implements Serializable{
 	public List<TecRemoto> getTecnicosByName(String name) throws Exception{
 		return tecnicoRepository.findByName(name);
 	}
-
-	
-	
 	
 }

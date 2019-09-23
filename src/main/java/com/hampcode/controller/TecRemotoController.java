@@ -72,11 +72,11 @@ public class TecRemotoController implements Serializable {
 	
 	public String newTecnico() {
 		
-		return "insert.xhtml";
+		return "/TecRemoto/insert.xhtml";
 	}
 
 	public String listTecnico() {
-		return "list.xhtml";
+		return "/TecRemoto/list.xhtml";
 	}
 
 	public String saveTecnico() {
@@ -93,7 +93,7 @@ public class TecRemotoController implements Serializable {
 			}
 			this.getAllTecnicos();
 			resetForm();
-			view = "list";
+			view = "/TecRemoto/list";
 		} catch (Exception e) {
 			Message.messageError("Error en la carga de tecnicos :" + e.getStackTrace());
 		}
@@ -107,7 +107,7 @@ public class TecRemotoController implements Serializable {
 			if (this.tecnicoSelect != null) {
 				this.tecnico = tecnicoSelect;
 
-				view = "/product/update";
+				view = "/TecRemoto/update";
 			} else {
 				Message.messageInfo("Debe seleccionar un tecnico");
 			}
