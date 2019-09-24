@@ -22,49 +22,55 @@
 
 
 			<p:sidebar widgetVar="sidebar1" baseZIndex="10000">
-				<h1 style="font-weight: normal">Menú Sidebar</h1>
-				<h:form>
-					<p:menu toggleable="true">
-
-						<p:submenu label="Ticket de Atención">
-							<p:menuitem value="Lista" url="/Ticket/list.xhtml"
-								icon="pi pi-save" />
-							<p:menuitem value="Insertar" url="/Ticket/insert.xhtml"
-								icon="pi pi-refresh" />
-						</p:submenu>
-						<p:submenu label="Especialidades">
-							<p:menuitem value="Lista" url="/especialidad/list.xhtml"
-								icon="pi pi-save" />
-							<p:menuitem value="Insertar" url="/especialidad/insert.xhtml"
-								icon="pi pi-refresh" />
-						</p:submenu>
-						<p:submenu label="Clientes">
-							<p:menuitem value="Lista" url="/cliente/list.xhtml"
-								icon="pi pi-save" />
-							<p:menuitem value="Insertar" url="/cliente/insert.xhtml"
-								icon="pi pi-refresh" />
-						</p:submenu>
-						<p:submenu label="Tecnicos Ind.">
-							<p:menuitem value="Lista" url="/TecnicoInd/list.xhtml"
-								icon="pi pi-save" />
-							<p:menuitem value="Insertar" url="/TecnicoInd/insert.xhtml"
-								icon="pi pi-refresh" />
-						</p:submenu>
-						<p:submenu label="Tecnicos Remoto">
-							<p:menuitem value="Lista" url="/TecRemoto/list.xhtml"
-								icon="pi pi-save" />
-							<p:menuitem value="Insertar" url="/TecRemoto/insert.xhtml"
-								icon="pi pi-refresh" />
-						</p:submenu>
 
 
-					</p:menu>
+					<h1 style="font-weight: normal">Menú Sidebar</h1>
+					<h:form>
+						<p:menu toggleable="true">
 
-				</h:form>
+							<p:submenu label="Ticket de Atención">
+								<p:menuitem value="Lista" url="/Ticket/list.xhtml"
+									icon="pi pi-save" />
+								<p:menuitem value="Insertar" url="/Ticket/insert.xhtml"
+									icon="pi pi-refresh" />
+							</p:submenu>
+							
+							
+							<p:submenu label="Especialidades">
+								<p:menuitem value="Lista" url="/especialidad/list.xhtml"
+									icon="pi pi-save" />
+								<p:menuitem value="Insertar" url="/especialidad/insert.xhtml"
+									icon="pi pi-refresh" />
+							</p:submenu>
+							<p:submenu label="Clientes">
+								<p:menuitem value="Lista" url="/cliente/list.xhtml"
+									icon="pi pi-save" />
+								<p:menuitem value="Insertar" url="/cliente/insert.xhtml"
+									icon="pi pi-refresh" />
+							</p:submenu>
+							<p:submenu label="Tecnicos Ind.">
+								<p:menuitem value="Lista" url="/TecnicoInd/list.xhtml"
+									icon="pi pi-save" />
+								<p:menuitem value="Insertar" url="/TecnicoInd/insert.xhtml"
+									icon="pi pi-refresh" />
+							</p:submenu>
+							<p:submenu label="Tecnicos Remoto">
+								<p:menuitem value="Lista" url="/TecRemoto/list.xhtml"
+									icon="pi pi-save" />
+								<p:menuitem value="Insertar" url="/TecRemoto/insert.xhtml"
+									icon="pi pi-refresh" />
+							</p:submenu>
 
-				<p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()" />
+							
+						</p:menu>
 
+					</h:form>
+
+					<p:commandButton value="Cancel" oncomplete="PF('sidebar1').hide()" />
+			
 			</p:sidebar>
+			
+			
 
 
 		</h:form>
