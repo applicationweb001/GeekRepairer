@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tecnicoInd")
+@Table(name = "tecnicoInds")
 public class TecnicoInd implements Serializable {
 
 	private static final long serialVersionUID = 1L;
