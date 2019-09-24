@@ -25,6 +25,13 @@
 				<h1 style="font-weight: normal">Menú Sidebar</h1>
 				<h:form>
 					<p:menu toggleable="true">
+
+						<p:submenu label="Ticket de Atención">
+							<p:menuitem value="Lista" url="/Ticket/list.xhtml"
+								icon="pi pi-save" />
+							<p:menuitem value="Insertar" url="/Ticket/insert.xhtml"
+								icon="pi pi-refresh" />
+						</p:submenu>
 						<p:submenu label="Especialidades">
 							<p:menuitem value="Lista" url="/especialidad/list.xhtml"
 								icon="pi pi-save" />
@@ -50,7 +57,7 @@
 								icon="pi pi-refresh" />
 						</p:submenu>
 
-							
+
 					</p:menu>
 
 				</h:form>
