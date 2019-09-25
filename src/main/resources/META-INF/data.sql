@@ -10,3 +10,7 @@ INSERT INTO tecremoto (nombre,apellido,email,genero) VALUES ('Carlos','Sosa','em
 INSERT INTO tecremoto (nombre,apellido,email,genero) VALUES ('Miguel','Carrillo','email@gmail.com','Masculino');
 INSERT INTO tecremoto (nombre,apellido,email,genero) VALUES ('Santana','Ramos','email@gmail.com','Femenino');
 INSERT INTO tecremoto (nombre,apellido,email,genero) VALUES ('Mickela','Lopez','email@gmail.com','Femenino');
+
+Insert iNTO Categorias (nombre,descripcion) values ('Hardware','Equipo fisico')
+Insert iNTO Categorias (nombre,descripcion) values ('Software','Codigo Logico')
+

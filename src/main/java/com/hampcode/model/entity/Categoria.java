@@ -18,6 +18,18 @@ public class Categoria {
 	@Column(name = "name", nullable = false, length = 60)
 	private String name;
 
+	@Column(name = "descripcion", nullable = false, length = 60)
+	private String descripcion;
+
+	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	public Long getId() {
 		return id;
 	}
