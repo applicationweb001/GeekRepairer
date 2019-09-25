@@ -36,7 +36,7 @@
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Seleccione una opción"
 							noSelectionOption="true" itemValue="" />
-						<f:selectItems value="#{productController.suppliers}"
+						<f:selectItems value="#{productController.supplier}"
 							var="supplier" itemLabel="#{supplier.name}"
 							itemValue="#{supplier}" />
 					</p:selectOneMenu>
