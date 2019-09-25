@@ -25,24 +25,29 @@
 				</p:toolbar>
 
 
-				<p:panelGrid id="panGridTecnicoInd" columns="2" style="width:100%">
+				<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
 					<p:outputLabel value="Nombre:" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
-						value="#{tecnicoIndController.tecnicoInd.nombre}" />
-					<p:outputLabel value="Telefono:" for="txtTelefono" />
-					<p:inputText id="txtTelefono" required="true" maxlength="45"
-						value="#{tecnicoIndController.tecnicoInd.telefono}" />
-					<p:outputLabel value="Estado:" for="txtEstado" />
-					<p:inputText id="txtEstado" required="true" maxlength="45"
-						value="#{tecnicoIndController.tecnicoInd.estado}" />
-					<p:outputLabel value="Monto por Hora:" for="txtUnitPrice" />
-					<p:inputText id="txtUnitPrice" required="true" maxlength="45"
-						value="#{tecnicoIndController.tecnicoInd.montoHora}" />
-				</p:panelGrid>
-				<br></br>
-
-
-
+						value="#{productController.product.name}" />
+					<p:outputLabel value="Precio" for="txtPrecio" />
+					<p:inputText id="txtPrecio" required="true" maxlength="45"
+						value="#{productController.product.unitPrice}" />
+					<p:outputLabel value="Stock:" for="txtStock" />
+					<p:inputText id="txtStock" required="true" maxlength="45"
+						value="#{productController.product.unitsInStock}" />
+												
+						<p:outputLabel value="Categoria" for="cboCategoria" />
+						<p:selectOneMenu id="cboCategoria" required="true" effect="drop"
+							value="#{productController.categoria}"
+							converter="omnifaces.SelectItemsConverter">
+							<f:selectItem itemLabel="Seleccione una opción"
+								noSelectionOption="true" itemValue="" />
+							<f:selectItems value="#{productController.categorias}"
+								var="categoria" itemLabel="#{categoria.nombre}"
+								itemValue="#{categoria}" />
+						</p:selectOneMenu>
+					</p:panelGrid>
+					<br></br>
 			</h:form>
 		</ui:define>
 	</ui:composition>
