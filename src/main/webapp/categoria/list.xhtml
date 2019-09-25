@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head></h:head>
+<body>
+
+	<ui:composition template="/WEB-INF/templates/master.xhtml">
+		<ui:define name="content">
+			<h:form id="frm">
+				<p:growl id="men" />
+
+				<p:toolbar>
+					<f:facet name="right">
+						<p:commandButton value="Nuevo" icon="ui-icon-disk"
+							action="#{categoriaController.newCategoria()}" ajax="false" />
+
+						<p:commandButton value="Editar" icon="ui-icon-disk"
+							action="#{categoriaController.editCategoria()}" ajax="false" />
+
+
+					</f:facet>
+				</p:toolbar>
+
+
+				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
+					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
+					<p:inputText id="txtSearchName"
+						value="#{categoriaController.filterName}" />
+					<p:commandButton icon="ui-icon-search"
+						actionListener="#{categoriaController.searchCategoriaPorNombre}"
+						update=":frm:datTabCategorias :frm:men" />
+				</p:panelGrid>
+
+				<p:dataTable id="datTabCategorias"
+					emptyMessage="No existen tecnicos independientes registrados"
+					value="#{categoriaController.categorias}" var="categoria"
+					rowKey="#{categoria.id}" selectionMode="single"
+					selection="#{categoriaController.categoriaSelection}"
+					paginator="true" rows="10">
+
+
+					<p:ajax event="rowSelect"
+						listener="#{categoriaController.selectCategoria}" />
+
+
+					<p:column headerText="Id">
+						<p:outputLabel value="#{categoria.id}" />
+					</p:column>
+					<p:column headerText="Nombre">
+						<p:outputLabel value="#{categoria.nombre}" />
+					</p:column>
+					<p:column headerText="Telefono">
+						<p:outputLabel value="#{categoria.descripcion}" />
+					</p:column>
+					
+
+				</p:dataTable>
+
+
+
+
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</body>
+</html>

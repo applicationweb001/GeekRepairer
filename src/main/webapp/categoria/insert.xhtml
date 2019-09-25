@@ -19,8 +19,8 @@
 							action="#{categoriaController.saveCategoria()}" ajax="false" />
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-							action="#{categoriaController.listCategoria()}"
-							immediate="true" ajax="false" />
+							action="#{categoriaController.listCategoria()}" immediate="true"
+							ajax="false" />
 					</f:facet>
 				</p:toolbar>
 
@@ -29,13 +29,13 @@
 					<p:outputLabel value="Nombre:" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
 						value="#{categoriaController.categoria.nombre}" />
-					<p:outputLabel value="Descripción:" for="txtDescripción" />
-					<p:inputText id="txtDescripción" required="true" maxlength="45"
+					<p:outputLabel value="Descripción:" for="txtDescripcion" />
+					<p:inputText id="txtDescripcion" required="true" maxlength="45"
 						value="#{categoriaController.categoria.descripcion}" />
-					
-				</p:panelGrid>
-				<br></br>
 
+				</p:panelGrid>
+
+				<br></br>
 
 
 			</h:form>

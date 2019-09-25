@@ -9,6 +9,8 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import org.primefaces.event.SelectEvent;
+
 import com.hampcode.business.CategoriaBusiness;
 import com.hampcode.model.entity.Categoria;
 import com.hampcode.util.Message;
@@ -17,42 +19,43 @@ import com.hampcode.util.Message;
 @SessionScoped
 public class CategoriaController implements Serializable {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Inject
 	private CategoriaBusiness categoriaBusiness;
+
 	private Categoria categoria;
 	private List<Categoria> categorias;
-	private Categoria categoriaSelect;
+	private Categoria categoriaSelection;
 	private String filterName;
 
+	
 	@PostConstruct
 	public void init() {
 		categoria = new Categoria();
 		categorias = new ArrayList<Categoria>();
 		getAllCategorias();
-	}
 
-	public void resetForm() {
-		this.filterName = "";
-		this.categoria = new Categoria();
-	}
-	
-	public String newCliente() {
-		resetForm();
-		return "/categoria/insert.xhtml";
-	}
-
-	public String listCliente() {
-		return "/categoria/list.xhtml";
 	}
 
 	public void getAllCategorias() {
 		try {
 			categorias = categoriaBusiness.getAll();
 		} catch (Exception e) {
-			Message.messageError("Error Carga de Categorias :" + e.getMessage());
+			Message.messageError("Error Carga de Categoria :" + e.getMessage());
 		}
+	}
+
+	public String newCategoria() {
+		resetForm();
+		return "/categoria/insert.xhtml";
+	}
+
+	public String listCategoria() {
+		return "/categoria/list.xhtml";
 	}
 
 	public String saveCategoria() {
@@ -69,29 +72,58 @@ public class CategoriaController implements Serializable {
 			}
 			this.getAllCategorias();
 			resetForm();
-			view = "list";
+			view = "/categoria/list.xhtml";
 		} catch (Exception e) {
-			Message.messageError("Error Product :" + e.getStackTrace());
+			Message.messageError("Que pasa aqui?");
+
+			Message.messageError("Error Product1323:" + e.getStackTrace());
+
+			Message.messageError("Que pasa aqui?");
 		}
 
 		return view;
 	}
 
-	public String editProduct() {
+	public String editCategoria() {
 		String view = "";
 		try {
-			if (this.categoriaSelect != null) {
-				this.categoria = categoriaSelect;
+			if (this.categoriaSelection != null) {
+				this.categoria = this.categoriaSelection;
 
-				view = "/Categoria/update";// Vista
+				view = "/categoria/update.xhtml";// Vista
 			} else {
-				Message.messageInfo("Debe seleccionar un Categoria");
+				Message.messageInfo("Debe seleccionar un cliente");
 			}
 		} catch (Exception e) {
-			Message.messageError("Error Categoria :" + e.getMessage());
+			Message.messageError("Error cliente :" + e.getMessage());
 		}
 
 		return view;
+	}
+
+	public void searchCategoriaPorNombre() {
+		try {
+
+			categorias = categoriaBusiness.getCategoriaPorNombre(this.filterName.trim());
+			resetForm();
+			if (categorias.isEmpty()) {
+				Message.messageInfo("No se encontraron clientes");
+
+			}
+
+		} catch (Exception e) {
+			Message.messageError("Error Client Search :" + e.getMessage());
+		}
+	}
+
+	public void selectCategoria(SelectEvent e) {
+		this.categoriaSelection = (Categoria) e.getObject();
+	}
+
+	public void resetForm() {
+		this.filterName = "";
+		this.categoria = new Categoria();
+
 	}
 
 	public CategoriaBusiness getCategoriaBusiness() {
@@ -118,12 +150,12 @@ public class CategoriaController implements Serializable {
 		this.categorias = categorias;
 	}
 
-	public Categoria getCategoriaSelect() {
-		return categoriaSelect;
+	public Categoria getCategoriaSelection() {
+		return categoriaSelection;
 	}
 
-	public void setCategoriaSelect(Categoria categoriaSelect) {
-		this.categoriaSelect = categoriaSelect;
+	public void setCategoriaSelection(Categoria categoriaSelection) {
+		this.categoriaSelection = categoriaSelection;
 	}
 
 	public String getFilterName() {
@@ -132,6 +164,10 @@ public class CategoriaController implements Serializable {
 
 	public void setFilterName(String filterName) {
 		this.filterName = filterName;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 }

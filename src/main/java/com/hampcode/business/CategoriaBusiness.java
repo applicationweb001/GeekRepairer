@@ -13,6 +13,9 @@ import com.hampcode.model.repository.CategoriaRepository;
 @Named
 public class CategoriaBusiness implements Serializable {
 
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Inject
@@ -30,6 +33,10 @@ public class CategoriaBusiness implements Serializable {
 
 	public List<Categoria> getAll() throws Exception {
 		return categoriaRepository.findAll();
+	}
+
+	public List<Categoria> getCategoriaPorNombre(String nombre) throws Exception {
+		return categoriaRepository.findByName(nombre);
 	}
 
 }

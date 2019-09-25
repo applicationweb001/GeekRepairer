@@ -1,28 +1,27 @@
 package com.hampcode.model.entity;
 
-import javax.persistence.Column;
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "categorias")
-public class Categoria {
+@Table(name="categorias")
+public class Categoria implements Serializable{
 
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@ManyToOne
-	@JoinColumn(name = "fk_category")
-	private Categoria categoria;
-
-	@Column(name = "name", nullable = false, length = 60)
-	private String name;
+	private String nombre;
+	private String descripcion;
 
 	public Long getId() {
 		return id;
@@ -32,20 +31,20 @@ public class Categoria {
 		this.id = id;
 	}
 
-	public Categoria getCategoria() {
-		return categoria;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
-	public String getName() {
-		return name;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 
 }
