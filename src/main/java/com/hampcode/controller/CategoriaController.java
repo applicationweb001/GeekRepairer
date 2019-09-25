@@ -1,13 +1,13 @@
 package com.hampcode.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import org.primefaces.event.SelectEvent;
 
 import com.hampcode.business.CategoriaBusiness;
 import com.hampcode.model.entity.Categoria;
@@ -26,25 +26,16 @@ public class CategoriaController implements Serializable {
 	private Categoria categoriaSelect;
 	private String filterName;
 
-	@PostConstruct
-	public void init() {
-		categoria = new Categoria();
-		categorias = new ArrayList<Categoria>();
-		getAllCategorias();
-	}
 
-	public void resetForm() {
-		this.filterName = "";
-		this.categoria = new Categoria();
-	}
 	
-	public String newCliente() {
+	
+	public String newCategoria() {
 		resetForm();
-		return "/categoria/insert.xhtml";
+		return "/Categoria/insert.xhtml";
 	}
 
-	public String listCliente() {
-		return "/categoria/list.xhtml";
+	public String listCategoria() {
+		return "/Categoria/list.xhtml";
 	}
 
 	public void getAllCategorias() {
@@ -69,7 +60,7 @@ public class CategoriaController implements Serializable {
 			}
 			this.getAllCategorias();
 			resetForm();
-			view = "list";
+			view = "/Categoria/list.xhtml";
 		} catch (Exception e) {
 			Message.messageError("Error Product :" + e.getStackTrace());
 		}
@@ -77,7 +68,7 @@ public class CategoriaController implements Serializable {
 		return view;
 	}
 
-	public String editProduct() {
+	public String editCategoria() {
 		String view = "";
 		try {
 			if (this.categoriaSelect != null) {
@@ -92,6 +83,30 @@ public class CategoriaController implements Serializable {
 		}
 
 		return view;
+	}
+	
+	public void searchCategoriaPorNombre() {
+		try {
+
+			categorias = categoriaBusiness.getCategoriaPorNombre(this.filterName.trim());
+			resetForm();
+			if (categorias.isEmpty()) {
+				Message.messageInfo("No se encontraron Categorias");
+
+			}
+
+		} catch (Exception e) {
+			Message.messageError("Error Categoria Search :" + e.getMessage());
+		}
+	}
+
+	public void resetForm() {
+		this.filterName = "";
+		this.categoria = new Categoria();
+	}
+	public void selectCliente(SelectEvent e)
+	{
+		this.categoria = (Categoria) e.getObject();
 	}
 
 	public CategoriaBusiness getCategoriaBusiness() {

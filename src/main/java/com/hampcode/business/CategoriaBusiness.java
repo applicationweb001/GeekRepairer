@@ -31,5 +31,9 @@ public class CategoriaBusiness implements Serializable {
 	public List<Categoria> getAll() throws Exception {
 		return categoriaRepository.findAll();
 	}
+	
+	public List<Categoria> getCategoriaPorNombre(String nombre) throws Exception {
+		return categoriaRepository.findByName(nombre);
+	}
 
 }
