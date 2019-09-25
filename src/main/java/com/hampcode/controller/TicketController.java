@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 
 import com.hampcode.business.TicketBusiness;
+import com.hampcode.model.entity.Cliente;
 import com.hampcode.model.entity.Ticket;
 import com.hampcode.util.Message;
 
@@ -23,9 +24,10 @@ public class TicketController implements Serializable{
 
 	@Inject
 	private TicketBusiness ticketBusiness;
-
+	private Cliente cliente;
 	private Ticket ticket;
 	private List<Ticket> tickets;
+	private List<Ticket> cola;
 	private Ticket ticketSelect;
 	
 
@@ -34,6 +36,8 @@ public class TicketController implements Serializable{
 		ticket = new Ticket();
 		tickets = new ArrayList<Ticket>();
 		getAllTickets();
+		getAllTicketsCola();
+		
 	}
 
 	public void getAllTickets() {
@@ -43,6 +47,14 @@ public class TicketController implements Serializable{
 			Message.messageError("Error en la carga de la lista de tecnicos :" + e.getMessage());
 		}
 	}
+	public void getAllTicketsCola() {
+		try {
+			cola = ticketBusiness.getAll();
+		} catch (Exception e) {
+			Message.messageError("Error en la carga de la lista de tecnicos :" + e.getMessage());
+		}
+	}
+	
 
 	public void resetForm() {
 	
@@ -59,11 +71,12 @@ public class TicketController implements Serializable{
 		return "/Ticket/list.xhtml";
 	}
 
-	public String saveTecnico() {
+	public String saveTicket() {
 		String view = "";
 		try {
 
 			if (ticket.getIdTicket() != null) {
+				ticket.setCliente(cliente);
 				this.ticketBusiness.update(ticket);
 				Message.messageInfo("Se actualizaron los datos satisfactoriamente");
 			} else {
@@ -128,6 +141,22 @@ public class TicketController implements Serializable{
 
 	public void setTicketSelect(Ticket ticketSelect) {
 		this.ticketSelect = ticketSelect;
+	}
+
+	public List<Ticket> getCola() {
+		return cola;
+	}
+
+	public void setCola(List<Ticket> cola) {
+		this.cola = cola;
+	}
+
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 	

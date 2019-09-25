@@ -42,6 +42,15 @@ public class TicketRepository implements Serializable {
 
 		return tickets;
 	}
+	
+	public List<Ticket> Cola() throws Exception {
+		List<Ticket> tickets = new ArrayList<>();
+
+		TypedQuery<Ticket> query = em.createQuery("FROM Ticket tic WHERE tic.estado = Cola", Ticket.class);
+		tickets = query.getResultList();
+
+		return tickets;
+	}
 
 	public Optional<Ticket> findById(Long id) throws Exception {
 		Ticket ticketFound;
