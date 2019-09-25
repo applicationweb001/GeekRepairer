@@ -19,8 +19,8 @@ public class Product {
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name="supplier_id")
-	private Supplier supplier;
+	@JoinColumn(name="categoria_id")
+	private Categoria categoria;
 
 	private Long category;
 
@@ -44,14 +44,6 @@ public class Product {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public Supplier getSupplier() {
-		return supplier;
-	}
-
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
 	}
 
 	public Long getCategory() {

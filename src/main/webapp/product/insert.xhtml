@@ -15,29 +15,41 @@
 
 				<p:toolbar>
 					<f:facet name="right">
-						<p:commandButton value="Guardar" icon="ui-icon-disk"
-							action="#{tecnicoIndController.saveTecnicoInd()}" ajax="false" />
+						<p:commandButton value="Guardar" icon="ui-icon-disk" 
+						action="#{productController.saveProduct()}" ajax="false"/>
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-							action="#{tecnicoIndController.listTecnicoInd()}"
-							immediate="true" ajax="false" />
+						  action="#{productController.listProduct()}"
+						  immediate="true"
+						  ajax="false"/>
 					</f:facet>
 				</p:toolbar>
 
 
-				<p:panelGrid id="panGridTecnicoInd" columns="2" style="width:100%">
-					<p:outputLabel value="Nombre:" for="txtName" />
+				<p:panelGrid id="panGridProduct" columns="2" style="width:100%">
+					<p:outputLabel value="Producto:" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
-						value="#{tecnicoIndController.tecnicoInd.nombre}" />
-					<p:outputLabel value="Telefono:" for="txtTelefono" />
-					<p:inputText id="txtTelefono" required="true" maxlength="45"
-						value="#{tecnicoIndController.tecnicoInd.telefono}" />
-					<p:outputLabel value="Estado:" for="txtEstado" />
-					<p:inputText id="txtEstado" required="true" maxlength="45"
-						value="#{tecnicoIndController.tecnicoInd.estado}" />
-					<p:outputLabel value="Monto por Hora:" for="txtUnitPrice" />
+						value="#{productController.product.name}" />
+					<p:outputLabel value="Proveedor" for="cboSupplier" />
+					<p:selectOneMenu id="cboSupplier" required="true" effect="drop"
+						value="#{productController.supplier}"
+						converter="omnifaces.SelectItemsConverter">
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItems value="#{productController.suppliers}"
+							var="supplier" itemLabel="#{supplier.name}"
+							itemValue="#{supplier}" />
+					</p:selectOneMenu>
+					
+					<p:outputLabel value="Categoria" for="txtCategory" />
+					<p:inputText id="txtCategory" required="true" maxlength="45"
+						value="#{productController.product.category}" />
+					<p:outputLabel value="Precio Unitario" for="txtUnitPrice" />
 					<p:inputText id="txtUnitPrice" required="true" maxlength="45"
-						value="#{tecnicoIndController.tecnicoInd.montoHora}" />
+						value="#{productController.product.unitPrice}" />
+					<p:outputLabel value="Stock" for="txtStock" />
+					<p:inputText id="txtStock" required="true" maxlength="45"
+						value="#{productController.product.unitsInStock}" />
 				</p:panelGrid>
 				<br></br>
 
