@@ -32,6 +32,11 @@ public class TicketBusiness implements Serializable{
 	public List<Ticket> getAll() throws Exception {
 		return ticketRepository.findAll();
 	}
+	
+	public List<Ticket> getAllCola() throws Exception {
+		return ticketRepository.findAllCola();
+	}
+	
 
 	public Ticket getTicketID(String id) throws Exception {
 		return ticketRepository.findByIdTicket(id);

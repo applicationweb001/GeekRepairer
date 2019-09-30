@@ -15,13 +15,11 @@
 
 				<p:toolbar>
 					<f:facet name="right">
-						<p:commandButton value="Guardar" icon="ui-icon-disk" 
-						action="#{productController.saveProduct()}" ajax="false"/>
-
+						<p:commandButton value="Guardar" icon="ui-icon-disk"
+							action="#{productController.saveProduct()}" ajax="false" />
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-						  action="#{productController.listProduct()}"
-						  immediate="true"
-						  ajax="false"/>
+							action="#{productController.listProduct()}" immediate="true"
+							ajax="false" />
 					</f:facet>
 				</p:toolbar>
 
@@ -30,31 +28,24 @@
 					<p:outputLabel value="Producto:" for="txtName" />
 					<p:inputText id="txtName" required="true" maxlength="45"
 						value="#{productController.product.name}" />
-					<p:outputLabel value="Proveedor" for="cboSupplier" />
-					<p:selectOneMenu id="cboSupplier" required="true" effect="drop"
-						value="#{productController.supplier}"
+
+					<p:outputLabel value="Categoria" for="cboCategoria" />
+					<p:selectOneMenu id="cboCategoria" required="true" effect="drop"
+						value="#{productController.categoria}"
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Seleccione una opción"
-							noSelectionOption="true" itemValue="" />
-						<f:selectItems value="#{productController.supplier}"
-							var="supplier" itemLabel="#{supplier.name}"
-							itemValue="#{supplier}" />
+							noSelectionOption="true" itemValue="0" />
+						<f:selectItems value="#{productController.categorias}"
+							var="categoria" itemLabel="#{categoria.name}"
+							itemValue="#{categoria}" />
 					</p:selectOneMenu>
-					
-					<p:outputLabel value="Categoria" for="txtCategory" />
-					<p:inputText id="txtCategory" required="true" maxlength="45"
-						value="#{productController.product.category}" />
-					<p:outputLabel value="Precio Unitario" for="txtUnitPrice" />
-					<p:inputText id="txtUnitPrice" required="true" maxlength="45"
+
+					<p:outputLabel value="Precio Unitario:" for="txtPrecio" />
+					<p:inputNumber id="txtPrecio" required="true" 
 						value="#{productController.product.unitPrice}" />
-					<p:outputLabel value="Stock" for="txtStock" />
-					<p:inputText id="txtStock" required="true" maxlength="45"
-						value="#{productController.product.unitsInStock}" />
+
 				</p:panelGrid>
 				<br></br>
-
-
-
 			</h:form>
 		</ui:define>
 	</ui:composition>

@@ -16,13 +16,11 @@
 				<p:toolbar>
 					<f:facet name="right">
 						<p:commandButton value="Nuevo" icon="ui-icon-disk"
-						  action="#{productController.newProduct()}"
-						  ajax="false"/>
-						
-						 <p:commandButton value="Editar" icon="ui-icon-disk"
-						  action="#{productController.editProduct()}"
-						  ajax="false"/>
-						
+							action="#{productController.newProduct()}" ajax="false" />
+
+						<p:commandButton value="Editar" icon="ui-icon-disk"
+							action="#{productController.editProduct()}" ajax="false" />
+
 
 					</f:facet>
 				</p:toolbar>
@@ -30,26 +28,24 @@
 
 				<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
 					<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
-					<p:inputText id="txtSearchName"  value="#{productController.filterName}" />
-					<p:commandButton icon="ui-icon-search" 
-					  actionListener="#{productController.searchProductByName}"
-					  update=":frm:datTabProducts :frm:men"/>
+					<p:inputText id="txtSearchName"
+						value="#{productController.filterName}" />
+					<p:commandButton icon="ui-icon-search"
+						actionListener="#{productController.searchProductByName}"
+						update=":frm:datTabProducts :frm:men" />
 				</p:panelGrid>
 
 				<p:dataTable id="datTabProducts"
 					emptyMessage="No existen productos registrados"
 					value="#{productController.products}" var="product"
-					
-					rowKey="#{product.id}"
-					selectionMode="single"
-					selection="#{productController.productSelect}"
-					
-					paginator="true" rows="10">
-					
-					
+					rowKey="#{product.id}" selectionMode="single"
+					selection="#{productController.productSelect}" paginator="true"
+					rows="10">
+
+
 					<p:ajax event="rowSelect"
 						listener="#{productController.selectProduct}" />
-					
+
 
 					<p:column headerText="Id">
 						<p:outputLabel value="#{product.id}" />
@@ -60,10 +56,14 @@
 					<p:column headerText="Categoria">
 						<p:outputLabel value="#{product.categoria.name}" />
 					</p:column>
-					
+					<p:column headerText="Precio Unitario">
+						<p:outputLabel value="#{product.unitPrice}" />
+					</p:column>
+
+
 				</p:dataTable>
 
-				
+
 
 
 			</h:form>

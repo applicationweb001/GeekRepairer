@@ -11,91 +11,141 @@
 	<ui:composition template="/WEB-INF/templates/master.xhtml">
 		<ui:define name="content">
 			<h:form id="frm">
-				<p:growl id="men"/>
+				<p:growl id="men" />
 
 				<p:toolbar>
 					<f:facet name="right">
-						<p:commandButton value="Guardar" icon="ui-icon-disk" 
-						action="#{ticketController.saveTicket()}" ajax="false"/>
+						<p:commandButton value="Guardar" icon="ui-icon-disk"
+							action="#{ticketController.saveTicket()}" ajax="false" />
 
 						<p:commandButton value="Regresar" icon="ui-icon-disk"
-						  action="#{ticketController.listTicket()}"
-						  immediate="true"
-						  ajax="false"/>
-					    <p:commandButton value="Agregar Cliente"
-						  icon="ui-icon-plus"
-						  onclick="PF('dgCliente').show();" />						
+							action="#{ticketController.listTicket()}" immediate="true"
+							ajax="false" />
+						<p:commandButton value="Agregar Cliente" icon="ui-icon-plus"
+							onclick="PF('dgCliente').show();" />
 					</f:facet>
 				</p:toolbar>
 
 
-				<p:panelGrid id="panGridTicket" columns="2" style="width:100%">
-					
-					<p:dialog widgetVar="dgCliente" 
-					header="Agregar Cliente" width="450"
+				<!-- d -->
+				<p:dialog widgetVar="dgCliente" header="Agregar Cliente" width="450"
 					height="400">
 					<p:toolbar>
 						<f:facet name="right">
 							<p:commandButton value="Agregar"
-								process="@this :frm:panCliente"
-								actionListener="#{ticketController.addCliente()}"
-								update=":frm:panCliente :frm:datCliente :frm:men"
+								process="@this :frm:panGridSubCliente"
+								update=":frm:panGridSubCliente :frm:men"
 								oncomplete="PF('dgCliente').hide();" />
 							<p:commandButton value="Cancelar" process="@this"
-								update=":frm:panCliente"
+								update=":frm:panGridSubCliente"
 								oncomplete="PF('dgCliente').hide();" />
 						</f:facet>
 					</p:toolbar>
 					<br />
 
-					<p:panelGrid id="panMedicalExam" columns="2" style="width:100%">
-
-						<p:outputLabel value="Examenes" for="cboExamenes" />
-
-						<p:selectOneMenu id="cboExamenes" required="true" effect="drop"
-							value="#{medicalConsultationController.medicalExam}"
-							converter="omnifaces.SelectItemsConverter" filter="true"
-							filterMatchMode="contains">
-							
-							<f:selectItems
-								value="#{medicalConsultationController.medicalExams}"
-								var="medicalExam" itemLabel="#{medicalExam.name}"
-								itemValue="#{medicalExam}" />
-
-						</p:selectOneMenu>
+					<!-- Aqui inicia los criterios para buscar -->
+					<p:panelGrid id="panGriBuscador" columns="3" style="width:100%">
+						<p:outputLabel value="Buscar Por Nombre:" for="txtSearchName" />
+						<p:inputText id="txtSearchName"
+							value="#{ticketController.filterNameCliente}" />
 
 					</p:panelGrid>
+
+					<p:panelGrid id="panGriBuscadorId" columns="3" style="width:100%">
+						<p:outputLabel value="Buscar Por ID:" for="txtSearchId" />
+						<p:inputText id="txtSearchId" value="#{ticketController.filterId}" />
+
+					</p:panelGrid>
+
+
+
+					<p:panelGrid id="panGridSubCliente" columns="2" style="width:100%">
+
+						<p:dataTable id="datTabCliente"
+							emptyMessage="No existen clientes registrados"
+							value="#{ticketController.clientes}" var="cliente"
+							rowKey="#{cliente.id}" selectionMode="single"
+							selection="#{ticketController.clienteSelect}" paginator="true"
+							rows="5">
+
+
+							<p:ajax event="rowSelect"
+								listener="#{ticketController.selectCliente}" />
+
+
+							<p:column headerText="Id">
+								<p:outputLabel value="#{cliente.id}" />
+							</p:column>
+							<p:column headerText="Tecnico">
+								<p:outputLabel value="#{tecnico.nombre}" />
+							</p:column>
+							<p:column headerText="Apellido">
+								<p:outputLabel value="#{tecnico.apellido}" />
+							</p:column>
+							<p:column headerText="Genero">
+								<p:outputLabel value="#{tecnico.genero}" />
+							</p:column>
+							<p:column headerText="Email">
+								<p:outputLabel value="#{tecnico.email}" />
+							</p:column>
+
+						</p:dataTable>
+
+
+					</p:panelGrid>
+
+
+
+
 				</p:dialog>
-										
-										
-					
-										
+
+
+
+				<p:panelGrid id="panGridTicket" columns="2" style="width:100%">
+
 					<p:outputLabel value="FechaAtencion" for="txtFechaAtencion" />
-					<p:inputText id="txtFechaAtencion" required="true" maxlength="45"
+					<p:calendar id="txtFechaAtencion"
 						value="#{ticketController.ticket.fechaAtencion}" />
-						
+
 					<p:outputLabel value="FechaServicio" for="txtFechaServicio" />
-					<p:inputText id="txtFechaServicio" required="true" maxlength="45"
+					<p:calendar id="txtFechaServicio"
 						value="#{ticketController.ticket.fechaServicio}" />
-					
-					<p:outputLabel value="TipoServicio" for="txtTipoServicio" />
-					<p:inputText id="txtTipoServicio" required="true" maxlength="45"
-						value="#{ticketController.ticket.tipoServicio}" />
-					
-					
+
+
+					<p:outputLabel value="TipoServicio" for="txtServicio" />
+					<p:selectOneMenu id="txtServicio" required="true"
+						value="#{ticketController.ticket.estado}" style="width:125px">
+
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItem itemLabel="Presencial" itemValue="Presencial" />
+						<f:selectItem itemLabel="Remoto" itemValue="Remoto" />
+					</p:selectOneMenu>
+
+
+
+
 					<p:outputLabel value="Estado" for="txtEstado" />
-					<p:inputText id="txtEstado" required="true" maxlength="45"
-						value="#{ticketController.ticket.estado}" />
-						
+					<p:selectOneMenu id="txtEstado" required="true"
+						value="#{ticketController.ticket.estado}" style="width:125px">
+
+						<f:selectItem itemLabel="Seleccione una opción"
+							noSelectionOption="true" itemValue="" />
+						<f:selectItem itemLabel="Fallado" itemValue="Fallado" />
+						<f:selectItem itemLabel="Cola" itemValue="Cola" />
+						<f:selectItem itemLabel="Completado" itemValue="Completado" />
+					</p:selectOneMenu>
+
+
 					<p:outputLabel value="Direccion" for="txtDireccion" />
-					<p:inputText id="txtEstado" required="true" maxlength="45"
+					<p:inputText id="txtDireccion" required="true" maxlength="45"
 						value="#{ticketController.ticket.direccion}" />
-						
+
 					<p:outputLabel value="HoraInicio" for="txtHoraInicio" />
 					<p:inputText id="txtHoraInicio" required="true" maxlength="45"
 						value="#{ticketController.ticket.horaInicio}" />
-					
-					
+
+
 				</p:panelGrid>
 				<br></br>
 

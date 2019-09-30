@@ -34,18 +34,18 @@
 						value="#{productController.categoria}"
 						converter="omnifaces.SelectItemsConverter">
 						<f:selectItem itemLabel="Seleccione una opción"
-							noSelectionOption="true" itemValue="" />
+							noSelectionOption="true" itemValue="0" />
 						<f:selectItems value="#{productController.categorias}"
 							var="categoria" itemLabel="#{categoria.name}"
 							itemValue="#{categoria}" />
 					</p:selectOneMenu>
 
+					<p:outputLabel value="Precio Unitario:" for="txtPrecio" />
+					<p:inputNumber id="txtPrecio" required="true" 
+						value="#{productController.product.unitPrice}" />
 
 				</p:panelGrid>
 				<br></br>
-
-
-
 			</h:form>
 		</ui:define>
 	</ui:composition>

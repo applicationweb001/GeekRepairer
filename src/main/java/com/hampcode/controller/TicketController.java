@@ -28,13 +28,21 @@ public class TicketController implements Serializable{
 	private Ticket ticket;
 	private List<Ticket> tickets;
 	private List<Ticket> cola;
+	private List<Cliente> clientes;
+	
 	private Ticket ticketSelect;
+	private Cliente clienteSelect;
+	
+	private String filterNameCliente;
+	private String filterId;
+	
 	
 
 	@PostConstruct
 	public void init() {
 		ticket = new Ticket();
 		tickets = new ArrayList<Ticket>();
+		clientes = new ArrayList<Cliente>();
 		getAllTickets();
 		getAllTicketsCola();
 		
@@ -44,14 +52,14 @@ public class TicketController implements Serializable{
 		try {
 			tickets = ticketBusiness.getAll();
 		} catch (Exception e) {
-			Message.messageError("Error en la carga de la lista de tecnicos :" + e.getMessage());
+			Message.messageError("Error en la carga de la lista de tickets  :" + e.getMessage());
 		}
 	}
 	public void getAllTicketsCola() {
 		try {
-			cola = ticketBusiness.getAll();
+			cola = ticketBusiness.getAllCola();
 		} catch (Exception e) {
-			Message.messageError("Error en la carga de la lista de tecnicos :" + e.getMessage());
+			Message.messageError("Error en la carga de la lista de tickets en cola :" + e.getMessage());
 		}
 	}
 	
@@ -159,5 +167,39 @@ public class TicketController implements Serializable{
 		this.cliente = cliente;
 	}
 
+	public String getFilterNameCliente() {
+		return filterNameCliente;
+	}
+
+	public void setFilterNameCliente(String filterNameCliente) {
+		this.filterNameCliente = filterNameCliente;
+	}
+
+	public String getFilterId() {
+		return filterId;
+	}
+
+	public void setFilterId(String filterId) {
+		this.filterId = filterId;
+	}
+
+	public List<Cliente> getClientes() {
+		return clientes;
+	}
+
+	public void setClientes(List<Cliente> clientes) {
+		this.clientes = clientes;
+	}
+
+	public Cliente getClienteSelect() {
+		return clienteSelect;
+	}
+
+	public void setClienteSelect(Cliente clienteSelect) {
+		this.clienteSelect = clienteSelect;
+	}
+
+	
+	
 	
 }
