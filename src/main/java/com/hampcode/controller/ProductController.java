@@ -42,7 +42,7 @@ public class ProductController implements Serializable {
 		product = new Product();
 		products = new ArrayList<Product>();
 		categoria = new Categoria();
-		categorias = new ArrayList<>();
+		categorias = new ArrayList<Categoria>();
 		getAllProducts();	
 	}
 

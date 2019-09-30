@@ -1,5 +1,7 @@
 package com.hampcode.model.entity;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,16 +12,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "products")
-public class Product {
+@Table(name = "productos")
+public class Product implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 
 	@ManyToOne
-	@JoinColumn(name="id")
+	@JoinColumn(name="FK_categoria")
 	private Categoria categoria;
 
 
@@ -31,14 +38,6 @@ public class Product {
 
 	public Long getId() {
 		return id;
-	}
-
-	public Categoria getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
 	}
 
 	public void setId(Long id) {
@@ -53,7 +52,13 @@ public class Product {
 		this.name = name;
 	}
 
+	public Categoria getCategoria() {
+		return categoria;
+	}
 
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
+	}
 
 	public double getUnitPrice() {
 		return unitPrice;
@@ -71,4 +76,9 @@ public class Product {
 		this.unitsInStock = unitsInStock;
 	}
 
+	
+	
+	
+	
+	
 }

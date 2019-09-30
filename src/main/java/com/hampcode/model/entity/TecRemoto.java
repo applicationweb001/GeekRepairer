@@ -10,8 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "tecremotos")
 
-public class TecRemoto {
-	
+public class TecRemoto{
 	
 	
 	@Column(name = "nombre", nullable = false)
@@ -24,7 +23,7 @@ public class TecRemoto {
 	private String email;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long id;
 
 	public Long getId() {

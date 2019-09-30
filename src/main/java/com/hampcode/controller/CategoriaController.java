@@ -1,8 +1,10 @@
 package com.hampcode.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -21,12 +23,19 @@ public class CategoriaController implements Serializable {
 
 	@Inject
 	private CategoriaBusiness categoriaBusiness;
+	
 	private Categoria categoria;
 	private List<Categoria> categorias;
 	private Categoria categoriaSelect;
 	private String filterName;
 
-
+	@PostConstruct
+	public void init(){
+		
+		categoria = new Categoria();
+		categorias = new ArrayList<Categoria>();
+		this.getAllCategorias();
+	}
 	
 	
 	public String newCategoria() {
@@ -40,7 +49,7 @@ public class CategoriaController implements Serializable {
 
 	public void getAllCategorias() {
 		try {
-			categorias = categoriaBusiness.getAll();
+			categorias = this.categoriaBusiness.getAll();
 		} catch (Exception e) {
 			Message.messageError("Error Carga de Categorias :" + e.getMessage());
 		}
@@ -85,6 +94,13 @@ public class CategoriaController implements Serializable {
 		return view;
 	}
 	
+	public void selectCategoria(SelectEvent e)
+	{
+		this.categoria = (Categoria) e.getObject();
+	}
+	
+	
+	
 	public void searchCategoriaPorNombre() {
 		try {
 
@@ -104,10 +120,7 @@ public class CategoriaController implements Serializable {
 		this.filterName = "";
 		this.categoria = new Categoria();
 	}
-	public void selectCliente(SelectEvent e)
-	{
-		this.categoria = (Categoria) e.getObject();
-	}
+	
 
 	public CategoriaBusiness getCategoriaBusiness() {
 		return categoriaBusiness;
