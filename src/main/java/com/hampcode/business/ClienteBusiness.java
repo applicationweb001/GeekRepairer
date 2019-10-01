@@ -36,5 +36,10 @@ public class ClienteBusiness implements Serializable {
 	public List<Cliente> getClientePorNombre(String nombre) throws Exception {
 		return clienteRepository.findByName(nombre);
 	}
+	
+	public List<Cliente> getByAll(String nombre,String apellido) throws Exception {
+		return clienteRepository.findByAll(nombre, apellido);
+	}
+	
 
 }

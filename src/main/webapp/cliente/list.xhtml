@@ -48,7 +48,7 @@
 					
 					
 					<p:ajax event="rowSelect"
-						listener="#{clienteController.clienteSelection}" />
+						listener="#{clienteController.selectCliente}" />
 					
 
 					<p:column headerText="Id">
@@ -61,7 +61,7 @@
 						<p:outputLabel value="#{cliente.apellido}" />
 					</p:column>
 					
-					
+	
 					<p:column headerText="telefono">
 						<p:outputLabel value="#{cliente.telefono}" />
 					</p:column>

@@ -22,6 +22,8 @@ public class Cliente implements Serializable{
 	private String nombre;
 	private String apellido;
 	private String email;
+	private String tipoDocumento;
+	private Long nroDocumento;
 	private String direccion;
 	private Long telefono;
 	
@@ -61,5 +63,18 @@ public class Cliente implements Serializable{
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
 	}
+	public String getTipoDocumento() {
+		return tipoDocumento;
+	}
+	public void setTipoDocumento(String tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
+	public Long getNroDocumento() {
+		return nroDocumento;
+	}
+	public void setNroDocumento(Long nroDocumento) {
+		this.nroDocumento = nroDocumento;
+	}
+	
 	
 }

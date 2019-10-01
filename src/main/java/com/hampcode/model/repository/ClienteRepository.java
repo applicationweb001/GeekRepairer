@@ -72,6 +72,19 @@ public class ClienteRepository implements Serializable{
 		return clientes;
 	}
 	
+	public List<Cliente> findByAll(String nombre,String apellido) throws Exception{
+		List<Cliente> clientes=new ArrayList<>();
+		
+		TypedQuery<Cliente> query=em.createQuery("FROM Cliente c WHERE c.nombre LIKE?1 AND c.apellido LIKE?2"
+				,Cliente.class);
+		query.setParameter(1, "%"+nombre+"%");
+		query.setParameter(2, "%"+apellido+"%");
+		
+		clientes=query.getResultList();
+		
+		return clientes;
+	}
+	
 	
 
 }

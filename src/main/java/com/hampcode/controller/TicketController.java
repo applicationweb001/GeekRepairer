@@ -9,7 +9,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-
+import com.hampcode.business.ClienteBusiness;
 import com.hampcode.business.TicketBusiness;
 import com.hampcode.model.entity.Cliente;
 import com.hampcode.model.entity.Ticket;
@@ -24,6 +24,10 @@ public class TicketController implements Serializable{
 
 	@Inject
 	private TicketBusiness ticketBusiness;
+	
+	@Inject
+	private ClienteBusiness clienteBusiness;
+	
 	private Cliente cliente;
 	private Ticket ticket;
 	private List<Ticket> tickets;
@@ -34,7 +38,7 @@ public class TicketController implements Serializable{
 	private Cliente clienteSelect;
 	
 	private String filterNameCliente;
-	private String filterId;
+	private String filterApellidoCliente;
 	
 	
 
@@ -66,7 +70,11 @@ public class TicketController implements Serializable{
 
 	public void resetForm() {
 	
+		this.filterApellidoCliente ="";
+		this.filterNameCliente ="";
 		this.ticket = new Ticket();
+		this.cliente = new Cliente();
+		
 	}
 
 	
@@ -117,6 +125,20 @@ public class TicketController implements Serializable{
 		}
 
 		return view;
+	}
+	
+	public void searchClienteByAll() {
+		try {
+
+			clientes = this.clienteBusiness.getByAll(this.filterNameCliente, this.filterApellidoCliente);
+			resetForm();
+			if (clientes.isEmpty()) {
+				Message.messageInfo("No se encontraron Clientes");
+			}
+
+		} catch (Exception e) {
+			Message.messageError("Error Tecnico Search :" + e.getMessage());
+		}
 	}
 
 	public TicketBusiness getTicketBusiness() {
@@ -175,13 +197,6 @@ public class TicketController implements Serializable{
 		this.filterNameCliente = filterNameCliente;
 	}
 
-	public String getFilterId() {
-		return filterId;
-	}
-
-	public void setFilterId(String filterId) {
-		this.filterId = filterId;
-	}
 
 	public List<Cliente> getClientes() {
 		return clientes;
@@ -199,7 +214,14 @@ public class TicketController implements Serializable{
 		this.clienteSelect = clienteSelect;
 	}
 
-	
+	public String getFilterApellidoCliente() {
+		return filterApellidoCliente;
+	}
+
+	public void setFilterApellidoCliente(String filterApellidoCliente) {
+		this.filterApellidoCliente = filterApellidoCliente;
+	}
+
 	
 	
 }
